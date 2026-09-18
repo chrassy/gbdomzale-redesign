@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Prototip prenove spletne strani Gracie Barra Domžale.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gracie Barra Domžale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --red:#E12726; --red-deep:#B5161B;
+  --blue:#1C3B91; --blue-deep:#122A6B; --blue-soft:#2A4DAE;
+  --ink:#0C1430; --muted:#55607C; --line:#D6DCEB;
+  --paper:#FFFFFF; --mist:#EEF1F8;
+  --p-gbk:#2E9D4B; --p-gb1:#2F6FD6; --p-gb2:#6A3FA3; --p-gb3:#111318; --p-gbf:#E0529C; --p-nogi:#5B6478;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --wrap:1200px;
+  --section:clamp(56px,8vw,112px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;font-style:italic;font-weight:800;line-height:.9;margin:0;text-wrap:balance;letter-spacing:.005em}
+h2{font-size:clamp(40px,6vw,72px)}
+h3{font-size:clamp(26px,2.6vw,32px)}
+p{margin:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:700 14px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.eyebrow::before{content:"";width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid currentColor}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:60ch}
+.sec-head{display:grid;gap:16px;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head.split{grid-template-columns:1fr auto;align-items:end;gap:24px}
+@media (max-width:760px){.sec-head.split{grid-template-columns:1fr}}
+
+/* Buttons: skewed like a GB patch */
+.btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border:0;background:none;cursor:pointer;
+  font:800 17px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff;white-space:nowrap}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--red);transform:skewX(-12deg);transition:background .15s,transform .15s}
+.btn:hover::before{background:var(--red-deep)}
+.btn:focus-visible{outline:none}
+.btn:focus-visible::before{outline:3px solid var(--ink);outline-offset:3px}
+.btn.ghost{color:var(--ink)}
+.btn.ghost::before{background:transparent;box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover::before{background:var(--mist)}
+.btn.white{color:var(--red)}
+.btn.white::before{background:#fff}
+.btn.white:hover::before{background:var(--mist)}
+.btn.sm{padding:11px 20px;font-size:15px}
+.btn .arr{font-style:normal;transition:transform .15s}
+@media (max-width:520px){.btn{white-space:normal;text-align:left;line-height:1.1}}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* Announcement */
+.promo{background:var(--ink);color:#fff;font:600 15px/1.3 var(--body)}
+.promo .wrap{display:flex;gap:12px 20px;align-items:center;justify-content:center;flex-wrap:wrap;padding-block:10px;text-align:center}
+.promo b{font:800 15px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--p-gbf);padding:5px 9px 4px}
+.promo a{color:#fff;font-weight:700;text-underline-offset:3px}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.brand img{width:48px;height:auto}
+.brand span{font:800 italic 21px/.9 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.brand small{display:block;font:700 13px/1 var(--display);font-style:normal;letter-spacing:.2em;color:var(--red);margin-top:4px}
+.nav{display:flex;gap:26px}
+.nav a{font:700 16px/1 var(--display);letter-spacing:.09em;text-transform:uppercase;text-decoration:none;padding-block:8px;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--red)}
+.nav a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media (max-width:980px){.nav{display:none}}
+@media (max-width:520px){.top .btn{display:none}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(40px,6vw,80px) clamp(48px,7vw,96px)}
+.hero::before{content:"";position:absolute;right:-12%;top:-30%;width:70%;aspect-ratio:1/.87;background:var(--mist);clip-path:polygon(50% 0,100% 100%,0 100%);z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1{font-size:clamp(60px,9.4vw,136px);font-weight:900;line-height:.84;margin:18px 0 24px}
+.hero h1 em{display:block;color:var(--red);font-style:italic}
+.hero .lede{margin-bottom:32px;color:#3D4764}
+.hero .ctas{display:flex;gap:22px 28px;flex-wrap:wrap;padding-left:6px}
+.hero-art{position:relative;aspect-ratio:1/.93;max-width:100%}
+.tri{position:absolute;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.tri img{width:100%;height:100%;object-fit:cover}
+.tri-red{left:0;top:4%;width:74%;aspect-ratio:1/.87;background:var(--red)}
+.tri-main{right:0;top:0;width:88%;aspect-ratio:1/.87}
+.tri-main img{object-position:40% 60%}
+.tri-kids-bg{left:-2%;bottom:-3%;width:50%;aspect-ratio:1/.87;background:#fff}
+.tri-kids{left:2.5%;bottom:0;width:41%;aspect-ratio:1/.87}
+.tri-kids img{object-position:60% 40%}
+.stamp{position:absolute;right:2%;bottom:6%;background:var(--blue);color:#fff;padding:12px 16px 10px;transform:skewX(-12deg);font:800 15px/1.05 var(--display);letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.stamp span{display:block;transform:skewX(12deg)}
+.stamp strong{display:block;font-size:30px;letter-spacing:0}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero-art{max-width:560px}}
+
+/* Facts band */
+.facts{background:var(--blue);color:#fff}
+.facts ul{list-style:none;margin:0;display:grid;grid-template-columns:repeat(4,1fr);padding-block:26px}
+.facts li{padding:6px 22px;border-left:1px solid rgba(255,255,255,.22);display:grid;gap:4px}
+.facts li:first-child{border-left:0;padding-left:0}
+.facts strong{font:800 italic clamp(26px,2.8vw,34px)/1 var(--display);text-transform:uppercase}
+.facts span{font-size:15px;color:#C9D4F2}
+@media (max-width:860px){.facts ul{grid-template-columns:1fr 1fr;row-gap:18px}.facts li:nth-child(3){border-left:0;padding-left:0}}
+@media (max-width:420px){.facts ul{grid-template-columns:1fr}.facts li{border-left:0;padding-left:0}}
+
+/* Steps */
+.steps{padding-block:var(--section)}
+.steps ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:12px;align-content:start;padding-top:24px;border-top:3px solid var(--ink)}
+.steps li::before{content:counter(s);font:900 italic 88px/.8 var(--display);color:transparent;-webkit-text-stroke:2px var(--red)}
+.steps li p{color:var(--muted)}
+@media (max-width:760px){.steps ol{grid-template-columns:1fr}}
+
+/* Program badge — mirrors the schedule legend */
+.badge{display:inline-flex;align-items:stretch;font:900 italic 22px/1 var(--display);letter-spacing:-.01em;color:var(--ink)}
+.badge .gb{padding:4px 3px 2px 0}
+.badge .n{display:inline-grid;place-items:center;min-width:24px;padding:4px 5px 2px;margin-left:2px;color:#fff;font-style:normal;font-size:19px}
+.badge.on-dark{color:#fff}
+.k-gbk .n{background:var(--p-gbk)} .k-gb1 .n{background:var(--p-gb1)} .k-gb2 .n{background:var(--p-gb2)}
+.k-gb3 .n{background:var(--p-gb3)} .k-gbf .n{background:var(--p-gbf)} .k-nogi .n{background:var(--p-nogi)}
+.badge.on-dark.k-gb3 .n{background:#fff;color:var(--ink)}
+
+/* Programs */
+.programs{background:var(--mist);padding-block:var(--section)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+@media (max-width:980px){.prog-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.prog-grid{grid-template-columns:1fr}}
+.prog{background:var(--paper);display:grid;grid-template-rows:auto 1fr;text-decoration:none;transition:transform .2s}
+.prog:hover{transform:translateY(-4px)}
+.prog figure{margin:0;aspect-ratio:16/10;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 86%,0 100%)}
+.prog figure img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prog:hover figure img{transform:scale(1.04)}
+.prog .body{padding:14px 24px 24px;display:grid;gap:10px;align-content:start}
+.prog h3{font-size:30px}
+.prog .who{font:700 14px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.prog p.desc{color:var(--muted);font-size:16px}
+.prog .slots{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.prog .slots span{font:700 14px/1 var(--display);letter-spacing:.04em;background:var(--mist);padding:7px 9px 6px;font-variant-numeric:tabular-nums}
+
+/* Schedule */
+.sched{background:var(--blue);color:#fff;padding-block:var(--section);position:relative;overflow:hidden}
+.sched::after{content:"GRACIE BARRA";position:absolute;left:-2%;bottom:-4%;font:900 italic clamp(90px,17vw,240px)/.8 var(--display);color:rgba(255,255,255,.05);white-space:nowrap;pointer-events:none}
+.sched .eyebrow{color:#fff}
+.sched .lede{color:#C9D4F2}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:700 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:10px 14px 9px;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer}
+.chip:hover{border-color:#fff}
+.chip[aria-pressed="true"]{background:#fff;color:var(--blue);border-color:#fff}
+.chip:focus-visible,.daytab:focus-visible{outline:3px solid var(--p-gbf);outline-offset:2px}
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px;position:relative;z-index:1}
+.day{display:grid;gap:8px;align-content:start;min-width:0}
+.day h4{margin:0 0 4px;font:800 18px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;padding-bottom:10px;border-bottom:2px solid rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:baseline}
+.day.today h4{border-color:var(--red)}
+.day h4 small{font-size:12px;letter-spacing:.12em;background:var(--red);padding:4px 6px 3px}
+.cls{background:#fff;color:var(--ink);padding:10px 12px 12px;display:grid;gap:6px;transition:opacity .2s}
+.cls time{font:800 24px/1 var(--display);font-variant-numeric:tabular-nums}
+.cls .badges{display:flex;flex-wrap:wrap;gap:4px 8px}
+.cls .badge{font-size:18px}
+.cls .badge .n{font-size:15px;min-width:19px}
+.cls .grp{font-size:13.5px;line-height:1.3;color:var(--muted);font-weight:600}
+.cls.dim{opacity:.18}
+.empty{font:600 15px/1.3 var(--body);color:#C9D4F2;padding:10px 0}
+.daytabs{display:none}
+.sched-foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;color:#C9D4F2;font-size:15px;position:relative;z-index:1}
+@media (max-width:900px){
+  .daytabs{display:flex;gap:6px;margin-top:24px;overflow-x:auto;padding-bottom:4px}
+  .daytab{flex:1 0 auto;min-width:52px;font:800 16px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;padding:12px 10px;background:var(--blue-deep);color:#fff;border:0;cursor:pointer}
+  .daytab[aria-selected="true"]{background:var(--red)}
+  .days{grid-template-columns:1fr;margin-top:14px}
+  .day{display:none}
+  .day.show{display:grid}
+  .day h4{display:none}
+  .cls{grid-template-columns:auto 1fr;align-items:center;column-gap:16px}
+  .cls time{grid-row:span 2}
+}
+
+/* Instructors */
+.coaches{padding-block:var(--section)}
+.coach-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+@media (max-width:820px){.coach-grid{grid-template-columns:1fr}}
+.coach{display:grid;grid-template-columns:clamp(130px,16vw,190px) 1fr;gap:clamp(18px,2.5vw,32px);align-items:start}
+.coach .ph{position:relative;aspect-ratio:190/248;background:var(--mist)}
+.coach .ph img{width:100%;height:100%;object-fit:cover}
+.coach .ph::after{content:"";position:absolute;left:-10px;bottom:-10px;width:44%;aspect-ratio:1/.87;background:var(--red);clip-path:polygon(0 0,100% 100%,0 100%);z-index:-1}
+.coach .ph{isolation:isolate}
+.coach .role{font:700 14px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.coach h3{font-size:clamp(32px,3.4vw,44px);margin-bottom:14px}
+.coach p{color:var(--muted);font-size:16px}
+.creds{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;padding:0;list-style:none}
+.creds li{font:700 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--ink);padding:7px 10px 6px}
+.creds li.hi{background:var(--ink);color:#fff}
+@media (max-width:460px){.coach{grid-template-columns:1fr}.coach .ph{max-width:180px}}
+
+/* Why GB */
+.why{background:var(--mist);padding-block:var(--section)}
+.why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+@media (max-width:860px){.why .wrap{grid-template-columns:1fr}}
+.why-ph{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.why-ph img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.why-ph img:last-child{margin-top:40px}
+.why ul{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:20px}
+.why li{display:grid;grid-template-columns:auto 1fr;gap:16px}
+.why li::before{content:"";width:14px;height:12px;margin-top:8px;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.why li b{display:block;font:800 italic 22px/1.1 var(--display);text-transform:uppercase;margin-bottom:4px}
+.why li span{color:var(--muted);font-size:16px}
+
+/* Quote band */
+.creed{background:var(--ink);color:#fff;padding-block:var(--section);overflow:hidden}
+.creed .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.creed .cgj{width:clamp(120px,15vw,200px);aspect-ratio:1/.87;clip-path:polygon(50% 0,100% 100%,0 100%);background:#fff}
+.creed .cgj img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.creed blockquote{margin:0;font:600 italic clamp(22px,2.4vw,30px)/1.3 var(--display);max-width:40ch}
+.creed cite{display:block;margin-top:16px;font:700 15px/1 var(--display);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.values{display:flex;flex-wrap:wrap;gap:0 clamp(16px,3vw,40px);margin-top:clamp(36px,5vw,60px);font:900 italic clamp(40px,7vw,96px)/.95 var(--display);text-transform:uppercase}
+.values span{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55)}
+.values span:nth-child(2){color:var(--red);-webkit-text-stroke:0}
+@media (max-width:620px){.creed .wrap{grid-template-columns:1fr}}
+
+/* Instagram */
+.feed{padding-block:var(--section)}
+.feed-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.feed-grid a{position:relative;aspect-ratio:1;overflow:hidden;display:block}
+.feed-grid img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.feed-grid a:hover img{transform:scale(1.06)}
+.feed-grid a:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+@media (max-width:760px){.feed-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* CTA band */
+.cta{background:var(--red);color:#fff;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;right:-5%;top:-40%;height:180%;aspect-ratio:1/.87;background:var(--red-deep);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cta .wrap{position:relative;display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;justify-content:space-between;padding-block:clamp(48px,6vw,80px)}
+.cta h2{font-size:clamp(44px,6.5vw,84px)}
+.cta p{font-size:18px;margin-top:10px;color:#FFE1E0;max-width:48ch}
+
+/* Footer */
+.foot{background:var(--blue-deep);color:#C9D4F2;padding-block:clamp(48px,6vw,72px) 32px;font-size:16px}
+.foot .grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px}
+@media (max-width:860px){.foot .grid{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.foot .grid{grid-template-columns:1fr}}
+.foot h4{margin:0 0 14px;font:800 16px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.foot a{color:#fff;text-underline-offset:3px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.foot .brand span{color:#fff}
+.foot .legal{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px}
+
+/* Mobile sticky CTA */
+.mcta{display:none}
+@media (max-width:620px){
+  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);border-top:1px solid var(--line)}
+  .mcta .btn{flex:1;justify-content:center}
+  body{padding-bottom:72px}
+}
+
+/* Booking dialog */
+dialog{border:0;padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);background:var(--paper);color:var(--ink)}
+dialog::backdrop{background:rgba(12,20,48,.72)}
+.dlg-head{background:var(--blue);color:#fff;padding:22px 24px 20px;position:relative;overflow:hidden}
+.dlg-head::after{content:"";position:absolute;right:-20px;bottom:-30px;width:140px;aspect-ratio:1/.87;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.9}
+.dlg-head h2{font-size:36px;position:relative;z-index:1}
+.dlg-head p{color:#C9D4F2;font-size:15px;margin-top:6px;position:relative;z-index:1;max-width:36ch}
+.x{position:absolute;right:10px;top:10px;z-index:2;width:40px;height:40px;border:0;background:transparent;color:#fff;font-size:26px;cursor:pointer}
+.x:focus-visible{outline:2px solid #fff}
+form.book{padding:22px 24px 26px;display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:480px){.row2{grid-template-columns:1fr}}
+.f{display:grid;gap:6px}
+.f label{font:700 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.f input,.f select{font:500 16px/1.2 var(--body);padding:12px 12px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:0;width:100%}
+.f input:focus,.f select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(28,59,145,.18)}
+.book .note{font-size:13.5px;color:var(--muted)}
+.book .btn{justify-self:start;margin:6px 0 0 6px}
+.done{padding:32px 24px 34px;display:grid;gap:12px}
+.done h3{font-size:34px}
+.done p{color:var(--muted)}
+.done .btn{justify-self:start;margin:8px 0 0 6px}
+</style>
+</head>
+<body>
+
+<div class="promo" role="region" aria-label="Novica">
+  <div class="wrap">
+    <b>Novo · GBF</b>
+    <span>Jiu-Jitsu za ženske — prvi mesec članarine brezplačen.</span>
+    <a href="#urnik" data-filter="gbf">Poglej termine →</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Gracie Barra Domžale — domov">
+      <img src="img/logo.png" alt="" width="48" height="49">
+      <span>Gracie Barra<small>Domžale</small></span>
+    </a>
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a href="#programi">Programi</a>
+      <a href="#urnik">Urnik</a>
+      <a href="#instruktorji">Inštruktorji</a>
+      <a href="#gb">O Gracie Barra</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="btn sm" data-book>Brezplačna uvodna ura</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Uradna Gracie Barra šola · Dob pri Domžalah</span>
+      <h1>Jiu-Jitsu <em>za vsakogar</em></h1>
+      <p class="lede">Brazilski jiu-jitsu za otroke od 5. leta, odrasle začetnike, izkušene tekmovalce in ženske. En standardiziran Gracie Barra program — od prvega belega pasu do črnega.</p>
+      <div class="ctas">
+        <button class="btn" data-book>Rezerviraj brezplačno uvodno uro <i class="arr">→</i></button>
+        <a class="btn ghost" href="#urnik">Poglej urnik</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="tri tri-red"></div>
+      <div class="tri tri-main"><img src="img/ig06.jpg" alt=""></div>
+      <div class="tri tri-kids-bg"></div>
+      <div class="tri tri-kids"><img src="img/kids.jpg" alt=""></div>
+      <div class="stamp"><span><strong>1000+</strong>GB šol po svetu</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="Na kratko">
+  <ul class="wrap">
+    <li><strong>Od 5. leta</strong><span>Otroške skupine po starosti</span></li>
+    <li><strong>Vpis vse leto</strong><span>Ne le ob začetku cikla</span></li>
+    <li><strong>6 dni v tednu</strong><span>Jutranji in večerni termini</span></li>
+    <li><strong>25+ let v GB</strong><span>Prof. Carlos Maia, Legacy Award</span></li>
+  </ul>
+</section>
+
+<section class="steps" aria-labelledby="kako">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Kako začnem?</span>
+      <h2 id="kako">Preprosto.</h2>
+    </div>
+    <ol>
+      <li><h3>Rezerviraj uvodno uro</h3><p>Izpolni kratek obrazec in izberi termin. Prva ura je brezplačna in individualna — brez obveznosti.</p></li>
+      <li><h3>Stopi na blazino</h3><p>Inštruktor ti pokaže osnove in te usmeri v skupino, ki ustreza tvoji starosti in predznanju.</p></li>
+      <li><h3>Vpiši se, ko si pripravljen</h3><p>Vpisi potekajo skozi celotno leto, ne le ob začetku vsakega novega 16-tedenskega cikla.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="programs" id="programi" aria-labelledby="prog-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">Programi</span>
+        <h2 id="prog-h">Pot od belega do črnega pasu</h2>
+      </div>
+      <p class="lede">Struktura je pečat vseh Gracie Barra šol: vsak učenec ve, kaj se pričakuje od njega — in kaj lahko pričakuje od inštruktorjev.</p>
+    </div>
+    <div class="prog-grid">
+      <a class="prog" href="#urnik" data-filter="gbk">
+        <figure><img src="img/ig07.jpg" alt="Otrok in inštruktor na blazini" loading="lazy"></figure>
+        <div class="body">
+          <span class="badge k-gbk"><span class="gb">GB</span><span class="n">K</span></span>
+          <h3>Otroci</h3>
+          <span class="who">5–15 let · 4 starostne skupine</span>
+          <p class="desc">Osredotočenost, disciplina, vztrajnost, sodelovanje in spoštovanje — vrednote, ki jih otroci odnesejo tudi domov in v šolo.</p>
+          <div class="slots" data-slots="GBK"></div>
+        </div>
+      </a>
+      <a class="prog" href="#urnik" data-filter="gb1">
+        <figure><img src="img/ig11.jpg" alt="Stisk rok pred sparingom" loading="lazy"></figure>
+        <div class="body">
+          <span class="badge k-gb1"><span class="gb">GB</span><span class="n">1</span></span>
+          <h3>Osnove</h3>
+          <span class="who">Odrasli začetniki</span>
+          <p class="desc">16-tedenski ciklični kurikulum: samoobramba in vsi glavni položaji brazilskega jiu-jitsa — v napadu in obrambi.</p>
+          <div class="slots" data-slots="GB1"></div>
+        </div>
+      </a>
+      <a class="prog" href="#urnik" data-filter="gb2">
+        <figure><img src="img/ig10.jpg" alt="Podelitev pasu" loading="lazy"></figure>
+        <div class="body">
+          <span class="badge k-gb2"><span class="gb">GB</span><span class="n">2</span></span>
+          <h3>Nadaljevalni</h3>
+          <span class="who">Od 3. stopnje belega pasu</span>
+          <p class="desc">Tehnike in vaje visokega nivoja: refleksi, hitrost, odzivni čas in prehodi med tehnikami. Tu se oblikuje tvoj stil.</p>
+          <div class="slots" data-slots="GB2"></div>
+        </div>
+      </a>
+      <a class="prog" href="#urnik" data-filter="gb2">
+        <figure><img src="img/ig03.jpg" alt="Vijolični in črni pas v modrih kimonih" loading="lazy"></figure>
+        <div class="body">
+          <span class="badge k-gb3"><span class="gb">GB</span><span class="n">3</span></span>
+          <h3>Napredni</h3>
+          <span class="who">Od modrega pasu dalje</span>
+          <p class="desc">Program za ustvarjanje črnih pasov. GB3 učenci so vzor v šoli in skrbijo za prijazno, varno okolje za vse.</p>
+          <div class="slots" data-slots="GB3"></div>
+        </div>
+      </a>
+      <a class="prog" href="#urnik" data-filter="gbf">
+        <figure><img src="img/ig02.jpg" alt="Trening na blazini Gracie Barra" loading="lazy"></figure>
+        <div class="body">
+          <span class="badge k-gbf"><span class="gb">GB</span><span class="n">F</span></span>
+          <h3>Ženske</h3>
+          <span class="who">Samo za ženske · Prvi mesec brezplačno</span>
+          <p class="desc">Samoobramba, samozavest in kondicija v sproščeni ženski skupini. Brez predznanja.</p>
+          <div class="slots" data-slots="GBF"></div>
+        </div>
+      </a>
+      <a class="prog" href="#urnik" data-filter="nogi">
+        <figure><img src="img/ig08.jpg" alt="Skupina s certifikati na blazini" loading="lazy"></figure>
+        <div class="body">
+          <span class="badge k-nogi"><span class="gb">No</span><span class="n">Gi</span></span>
+          <h3>Brez kimona</h3>
+          <span class="who">Odrasli · GB2 nivo</span>
+          <p class="desc">Jiu-jitsu v majici in kratkih hlačah — hitrejši tempo, drugačni prijemi. Odlična dopolnitev treningov v kimonu.</p>
+          <div class="slots" data-slots="NOGI"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sched" id="urnik" aria-labelledby="urnik-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">Sezona 2026/2027</span>
+        <h2 id="urnik-h">Urnik</h2>
+      </div>
+      <div class="chips" role="group" aria-label="Filtriraj po programu">
+        <button class="chip" data-f="all" aria-pressed="true">Vsi</button>
+        <button class="chip" data-f="gbk" aria-pressed="false">Otroci</button>
+        <button class="chip" data-f="gb1" aria-pressed="false">Začetniki</button>
+        <button class="chip" data-f="gb2" aria-pressed="false">GB2 / GB3</button>
+        <button class="chip" data-f="gbf" aria-pressed="false">Ženske</button>
+        <button class="chip" data-f="nogi" aria-pressed="false">No-Gi</button>
+      </div>
+    </div>
+    <div class="daytabs" role="tablist" aria-label="Dan v tednu"></div>
+    <div class="days"></div>
+    <div class="sched-foot">
+      <span>Nedelja: zaprto.</span>
+      <span>GBK 1: 5–6 let · GBK 2: 7–9 · GBK 3: 10–12 · GBK 4: 13–15</span>
+      <button class="btn white sm" data-book>Rezerviraj termin <i class="arr">→</i></button>
+    </div>
+  </div>
+</section>
+
+<section class="coaches" id="instruktorji" aria-labelledby="coach-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Inštruktorji</span>
+      <h2 id="coach-h">Kdo te uči</h2>
+    </div>
+    <div class="coach-grid">
+      <article class="coach">
+        <div class="ph"><img src="img/maia.jpg" alt="Prof. Carlos Maia" loading="lazy"></div>
+        <div>
+          <div class="role">Glavni inštruktor</div>
+          <h3>Prof. Carlos Maia</h3>
+          <p>Rojen in odraščal v Riu de Janeiru, kjer je nanj pečat pustila glavna Gracie Barra šola v Braziliji. Eden izmed pionirjev brazilskega jiu-jitsa v Sloveniji — s ciljem uresničiti »Jiu-Jitsu za vsakogar« tudi na tem koncu sveta.</p>
+          <ul class="creds">
+            <li class="hi">GB Legacy Award 2019</li>
+            <li>25+ let v Gracie Barra</li>
+            <li>Pionir BJJ v Sloveniji</li>
+          </ul>
+        </div>
+      </article>
+      <article class="coach">
+        <div class="ph"><img src="img/uros.jpg" alt="Prof. Uroš Koplan" loading="lazy"></div>
+        <div>
+          <div class="role">Inštruktor · otroci in odrasli</div>
+          <h3>Prof. Uroš Koplan</h3>
+          <p>Gracie Barra inštruktor z dvajsetletnimi izkušnjami v borilnih veščinah. Pod mentorstvom prof. Carlosa Maie deli znanje, filozofijo in vrednote jiu-jitsa ter pomaga drugim postati najboljša verzija sebe.</p>
+          <ul class="creds">
+            <li class="hi">Črni pas, 3. stopnja</li>
+            <li>20 let izkušenj</li>
+            <li>Otroške in odrasle skupine</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="gb" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="why-ph" aria-hidden="true">
+      <img src="img/sola.jpg" alt="" loading="lazy">
+      <img src="img/ig12.jpg" alt="" loading="lazy">
+    </div>
+    <div>
+      <span class="eyebrow">Zakaj Gracie Barra</span>
+      <h2 id="why-h" style="margin-top:16px">Ena ekipa na petih celinah</h2>
+      <ul>
+        <li><div><b>Standardiziran program</b><span>GB1 → GB2 → GB3. Vsak napreduje v svojem tempu, a vedno ve, kje je.</span></div></li>
+        <li><div><b>Struktura in točnost</b><span>Treningi se vedno začnejo ob dogovorjeni uri in sledijo enaki strukturi.</span></div></li>
+        <li><div><b>Treniraš lahko kjerkoli</b><span>Več kot 1000 Gracie Barra šol po svetu — tvoja ekipa te čaka tudi na dopustu.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="creed" aria-label="Vrednote">
+  <div class="wrap">
+    <div class="cgj"><img src="img/cgj.jpg" alt="Carlos Gracie ml." loading="lazy"></div>
+    <div>
+      <blockquote>»Moji učenci so del moje družine. Za prav vsakega od njih želim, da doseže svoj maksimalni potencial in z Jiu-Jitsom pomaga tudi drugim.«</blockquote>
+      <cite>Mojster Carlos Gracie ml. · ustanovitelj Gracie Barra</cite>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="values" aria-label="Bratovščina, integriteta, razvoj"><span>Bratovščina</span><span>Integriteta</span><span>Razvoj</span></div>
+  </div>
+</section>
+
+<section class="feed" aria-labelledby="feed-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">Z naše blazine</span>
+        <h2 id="feed-h">@gbdomzale</h2>
+      </div>
+      <a class="btn ghost" href="https://www.instagram.com/gbdomzale/" target="_blank" rel="noopener">Sledi na Instagramu <i class="arr">→</i></a>
+    </div>
+    <div class="feed-grid">
+      <a href="https://www.instagram.com/gbdomzale/p/DcvPuJoosHY/" target="_blank" rel="noopener"><img src="img/ig01.jpg" alt="Objava: Pridi in spoznaj GBF" loading="lazy"></a>
+      <a href="https://www.instagram.com/gbdomzale/p/Db-_zx8CEUf/" target="_blank" rel="noopener"><img src="img/ig03.jpg" alt="Objava: inštruktorja v modrih kimonih" loading="lazy"></a>
+      <a href="https://www.instagram.com/gbdomzale/reel/DXYnQjHiC4c/" target="_blank" rel="noopener"><img src="img/ig12.jpg" alt="Video: učenka z rumenim pasom" loading="lazy"></a>
+      <a href="https://www.instagram.com/gbdomzale/p/Daie8fYI9EL/" target="_blank" rel="noopener"><img src="img/ig06.jpg" alt="Objava: trening na blazini" loading="lazy"></a>
+      <a href="https://www.instagram.com/gbdomzale/reel/Db495uFoFbg/" target="_blank" rel="noopener"><img src="img/ig04.jpg" alt="Video: učenec v kimonu" loading="lazy"></a>
+      <a href="https://www.instagram.com/gbdomzale/p/DZCNedoiBKA/" target="_blank" rel="noopener"><img src="img/ig08.jpg" alt="Objava: podelitev certifikatov" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap">
+    <div>
+      <h2 id="cta-h">Prvi trening je na nas</h2>
+      <p>Brezplačna individualna uvodna ura za otroke in odrasle. Izberi termin — ostalo uredimo mi.</p>
+    </div>
+    <button class="btn white" data-book>Rezerviraj brezplačno uvodno uro <i class="arr">→</i></button>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="kontakt">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand" href="#" aria-label="Gracie Barra Domžale"><img src="img/logo.png" alt="" width="48" height="49"><span>Gracie Barra<small>Domžale</small></span></a>
+        <p style="margin-top:16px;max-width:32ch">Uradna Gracie Barra šola brazilskega jiu-jitsa. Del svetovne skupnosti Carlosa Gracieja ml.</p>
+      </div>
+      <div>
+        <h4>Kje smo</h4>
+        <ul>
+          <li>Ljubljanska cesta 1<br>1233 Dob</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Ljubljanska+cesta+1,+1233+Dob" target="_blank" rel="noopener">Odpri zemljevid →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:info@gbdomzale.si">info@gbdomzale.si</a></li>
+          <li><a href="https://www.instagram.com/gbdomzale/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/gbdomzale" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Šola</h4>
+        <ul>
+          <li><a href="#programi">Programi</a></li>
+          <li><a href="#urnik">Urnik 2026/27</a></li>
+          <li><a href="#kontakt">Cenik</a></li>
+          <li><a href="#kontakt">Pogoji poslovanja</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>© 2026 Gracie Barra Domžale</span><span>Jiu-Jitsu for Everyone®</span></div>
+  </div>
+</footer>
+
+<div class="mcta"><button class="btn" data-book>Brezplačna uvodna ura <i class="arr">→</i></button></div>
+
+<dialog id="book" aria-labelledby="book-h">
+  <div class="dlg-head">
+    <button class="x" type="button" aria-label="Zapri" data-close>×</button>
+    <h2 id="book-h">Brezplačna uvodna ura</h2>
+    <p>Izberi program in termin. Potrditev prejmeš po e-pošti.</p>
+  </div>
+  <form class="book" id="book-form">
+    <div class="f"><label for="b-name">Ime in priimek</label><input id="b-name" name="name" required autocomplete="name" placeholder="Ana Novak"></div>
+    <div class="row2">
+      <div class="f"><label for="b-mail">E-pošta</label><input id="b-mail" name="email" type="email" required autocomplete="email" placeholder="ana@primer.si"></div>
+      <div class="f"><label for="b-tel">Telefon</label><input id="b-tel" name="tel" type="tel" autocomplete="tel" placeholder="041 123 456"></div>
+    </div>
+    <div class="row2">
+      <div class="f"><label for="b-prog">Program</label>
+        <select id="b-prog" name="prog">
+          <option value="gb1">Odrasli začetniki (GB1)</option>
+          <option value="gbk">Otroci (GBK)</option>
+          <option value="gbf">Ženske (GBF)</option>
+          <option value="gb2">Z izkušnjami (GB2/GB3)</option>
+          <option value="nogi">No-Gi</option>
+        </select>
+      </div>
+      <div class="f"><label for="b-slot">Termin</label><select id="b-slot" name="slot"></select></div>
+    </div>
+    <p class="note">Prototip — obrazec v tej različici še ne pošilja podatkov.</p>
+    <button class="btn" type="submit">Potrdi rezervacijo <i class="arr">→</i></button>
+  </form>
+  <div class="done" hidden>
+    <span class="eyebrow">Rezervirano</span>
+    <h3 id="done-h">Se vidimo na blazini!</h3>
+    <p id="done-p"></p>
+    <button class="btn" type="button" data-close>Zapri</button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const DAYS = ['Pon','Tor','Sre','Čet','Pet','Sob'];
+  const DAYS_LONG = ['ponedeljek','torek','sreda','četrtek','petek','sobota'];
+  // Urnik 2026/2027 (vir: gbdomzale.si)
+  const S = [
+    {d:0,t:'09:00',p:['GB1','GB2'],g:'Odrasli · jutranji'},
+    {d:0,t:'16:30',p:['GBK'],g:'GBK 2 · 7–9 let'},
+    {d:0,t:'17:30',p:['GBK'],g:'GBK 3 · 10–12 let'},
+    {d:0,t:'18:30',p:['GB1'],g:'Odrasli začetniki'},
+    {d:0,t:'18:30',p:['GBF'],g:'Ženske'},
+    {d:0,t:'19:30',p:['GB2'],g:'Odrasli'},
+    {d:1,t:'16:10',p:['GBK'],g:'GBK 1 · 5–6 let'},
+    {d:1,t:'17:00',p:['GBK'],g:'GBK 4 · 13–15 let'},
+    {d:1,t:'18:00',p:['GB2'],g:'Odrasli'},
+    {d:2,t:'09:00',p:['GB1','GB2'],g:'Odrasli · jutranji'},
+    {d:2,t:'16:30',p:['GBK'],g:'GBK 2 · 7–9 let'},
+    {d:2,t:'17:30',p:['GBK'],g:'GBK 3 · 10–12 let'},
+    {d:2,t:'18:30',p:['GB1'],g:'Odrasli začetniki'},
+    {d:2,t:'18:30',p:['GBF'],g:'Ženske'},
+    {d:2,t:'19:30',p:['NOGI'],g:'Odrasli · brez kimona'},
+    {d:3,t:'16:10',p:['GBK'],g:'GBK 1 · 5–6 let'},
+    {d:3,t:'17:00',p:['GBK'],g:'GBK 4 · 13–15 let'},
+    {d:3,t:'18:00',p:['GB2','GB3'],g:'Odrasli'},
+    {d:4,t:'17:00',p:['GBK'],g:'Napredni otroci'},
+    {d:4,t:'18:00',p:['GB1'],g:'Odrasli začetniki'},
+    {d:4,t:'19:10',p:['NOGI'],g:'Odrasli · brez kimona'},
+    {d:5,t:'09:00',p:['GB1','GB2'],g:'Odrasli'},
+  ];
+  const BADGE = {GBK:['GB','K','gbk'],GB1:['GB','1','gb1'],GB2:['GB','2','gb2'],GB3:['GB','3','gb3'],GBF:['GB','F','gbf'],NOGI:['No','Gi','nogi']};
+  const FILTER = {all:()=>true,gbk:c=>c.p.includes('GBK'),gb1:c=>c.p.includes('GB1'),gb2:c=>c.p.some(x=>x==='GB2'||x==='GB3'),gbf:c=>c.p.includes('GBF'),nogi:c=>c.p.includes('NOGI')};
+  const badge = k => { const [a,b,c]=BADGE[k]; return `<span class="badge k-${c}"><span class="gb">${a}</span><span class="n">${b}</span></span>`; };
+
+  const jsDay = new Date().getDay(); // 0=ned
+  const today = jsDay === 0 ? -1 : jsDay - 1;
+  let sel = today < 0 ? 0 : today;
+
+  const daysEl = document.querySelector('.days');
+  const tabsEl = document.querySelector('.daytabs');
+  daysEl.innerHTML = DAYS.map((d,i) => `
+    <div class="day${i===today?' today':''}" data-day="${i}">
+      <h4>${d}${i===today?'<small>Danes</small>':''}</h4>
+      ${S.filter(c=>c.d===i).map(c=>`<div class="cls" data-i="${S.indexOf(c)}"><time>${c.t}</time><div class="badges">${c.p.map(badge).join('')}</div><div class="grp">${c.g}</div></div>`).join('')}
+    </div>`).join('');
+  tabsEl.innerHTML = DAYS.map((d,i)=>`<button class="daytab" role="tab" data-day="${i}" aria-selected="${i===sel}">${d}</button>`).join('');
+  const showDay = i => {
+    sel = i;
+    tabsEl.querySelectorAll('.daytab').forEach(b=>b.setAttribute('aria-selected', +b.dataset.day===i));
+    daysEl.querySelectorAll('.day').forEach(d=>d.classList.toggle('show', +d.dataset.day===i));
+  };
+  tabsEl.addEventListener('click', e => { const b=e.target.closest('.daytab'); if(b) showDay(+b.dataset.day); });
+  showDay(sel);
+
+  const chips = document.querySelectorAll('.chip');
+  const applyFilter = f => {
+    chips.forEach(c=>c.setAttribute('aria-pressed', c.dataset.f===f));
+    daysEl.querySelectorAll('.cls').forEach(el => el.classList.toggle('dim', !FILTER[f](S[+el.dataset.i])));
+  };
+  chips.forEach(c=>c.addEventListener('click',()=>applyFilter(c.dataset.f)));
+  document.querySelectorAll('[data-filter]').forEach(a=>a.addEventListener('click',()=>applyFilter(a.dataset.filter)));
+
+  // Termini na karticah programov
+  document.querySelectorAll('[data-slots]').forEach(el => {
+    const k = el.dataset.slots;
+    el.innerHTML = S.filter(c=>c.p.includes(k)).map(c=>`<span>${DAYS[c.d]} ${c.t}</span>`).join('');
+  });
+
+  // Rezervacija
+  const dlg = document.getElementById('book');
+  const form = document.getElementById('book-form');
+  const done = dlg.querySelector('.done');
+  const prog = document.getElementById('b-prog');
+  const slot = document.getElementById('b-slot');
+  const fillSlots = () => {
+    slot.innerHTML = S.filter(FILTER[prog.value]).map(c=>`<option>${DAYS_LONG[c.d]} ${c.t} — ${c.g}</option>`).join('');
+  };
+  prog.addEventListener('change', fillSlots); fillSlots();
+  document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>{
+    form.hidden=false; done.hidden=true; dlg.showModal();
+  }));
+  dlg.addEventListener('click', e => { if (e.target===dlg || e.target.closest('[data-close]')) dlg.close(); });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = (document.getElementById('b-name').value.trim().split(' ')[0]) || '';
+    document.getElementById('done-h').textContent = `Se vidimo na blazini${name?', '+name:''}!`;
+    document.getElementById('done-p').textContent = `Tvoj termin: ${slot.value}. Potrditev z vsemi podrobnostmi pošljemo na ${document.getElementById('b-mail').value}.`;
+    form.hidden=true; done.hidden=false;
+  });
+})();
+</script>
+</body>
+</html>
