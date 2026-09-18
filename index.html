@@ -101,19 +101,11 @@ p{margin:0}
 .btn.ghost-light::before{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 2px #fff}
 .btn.ghost-light:hover::before{background:rgba(255,255,255,.16)}
 .btn.ghost-light:focus-visible::before{outline-color:#fff}
-.vid-toggle{position:absolute;right:clamp(16px,4vw,40px);bottom:clamp(52px,7.5vw,104px);display:inline-flex;align-items:center;gap:8px;
-  padding:9px 12px;border:1.5px solid rgba(255,255,255,.5);background:rgba(14,32,84,.45);color:#fff;cursor:pointer;
-  font:700 13px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(4px)}
-.vid-toggle:hover{border-color:#fff}
-.vid-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px}
-.vid-toggle svg{width:12px;height:12px;fill:currentColor}
-.vid-toggle[hidden]{display:none}
 @media (max-width:760px){
   .hero{min-height:0}
   .hero-media::after{background:linear-gradient(180deg,rgba(14,32,84,.72) 0%,rgba(14,32,84,.82) 55%,rgba(14,32,84,.92) 100%)}
   .hero-media video{object-position:55% 50%}
   .hero-tri{width:78vw;right:-26vw;top:28%;opacity:.7}
-  .vid-toggle{top:14px;bottom:auto;right:16px;padding:7px 10px}
 }
 
 /* Facts band */
@@ -343,10 +335,6 @@ form.book{padding:22px 24px 26px;display:grid;gap:14px}
       </div>
     </div>
   </div>
-  <button class="vid-toggle" type="button" id="vid-toggle" aria-pressed="false" hidden>
-    <svg viewBox="0 0 12 12" aria-hidden="true"><rect x="1.5" y="1" width="3" height="10"/><rect x="7.5" y="1" width="3" height="10"/></svg>
-    <span>Ustavi video</span>
-  </button>
 </section>
 
 <section class="facts" aria-label="Na kratko">
@@ -714,23 +702,15 @@ form.book{padding:22px 24px 26px;display:grid;gap:14px}
   // Video v ozadju: poster takoj, video samo kadar je smiselno
   (() => {
     const v = document.getElementById('hero-video');
-    const btn = document.getElementById('vid-toggle');
     if (!v) return;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const saveData = navigator.connection && (navigator.connection.saveData || /(^|-)2g$/.test(navigator.connection.effectiveType || ''));
     if (reduce || saveData) return; // ostane poster
     v.src = innerWidth < 768 ? v.dataset.srcSm : v.dataset.srcLg;
     v.preload = 'auto';
-    let userPaused = false;
-    const PAUSE = '<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="1.5" y="1" width="3" height="10"/><rect x="7.5" y="1" width="3" height="10"/></svg><span>Ustavi video</span>';
-    const PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><polygon points="2,1 11,6 2,11"/></svg><span>Predvajaj video</span>';
-    const sync = () => { btn.innerHTML = v.paused ? PLAY : PAUSE; btn.setAttribute('aria-pressed', v.paused); };
-    v.addEventListener('play', sync); v.addEventListener('pause', sync);
-    v.play().then(() => { btn.hidden = false; }).catch(() => { btn.hidden = false; sync(); });
-    btn.addEventListener('click', () => { userPaused = !v.paused; v.paused ? v.play() : v.pause(); });
+    v.play().catch(() => {});
     // Ne troši baterije, ko hero ni viden
     new IntersectionObserver(([e]) => {
-      if (userPaused) return;
       e.isIntersecting ? v.play().catch(() => {}) : v.pause();
     }, { threshold: 0.1 }).observe(v);
   })();
