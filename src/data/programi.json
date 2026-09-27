@@ -1,0 +1,12 @@
+{
+  "naslov": "Pot od belega do črnega pasu",
+  "besedilo": "Struktura je pečat vseh Gracie Barra šol: vsak učenec ve, kaj se pričakuje od njega — in kaj lahko pričakuje od inštruktorjev.",
+  "seznam": [
+    { "program": "GBK", "naslov": "Otroci", "komu": "5–15 let · 4 starostne skupine", "opis": "Osredotočenost, disciplina, vztrajnost, sodelovanje in spoštovanje — vrednote, ki jih otroci odnesejo tudi domov in v šolo.", "slika": "/img/ig07.jpg", "alt": "Otrok in inštruktor na blazini", "filter": "gbk" },
+    { "program": "GB1", "naslov": "Osnove", "komu": "Odrasli začetniki", "opis": "16-tedenski ciklični kurikulum: samoobramba in vsi glavni položaji brazilskega jiu-jitsa — v napadu in obrambi.", "slika": "/img/ig11.jpg", "alt": "Stisk rok pred sparingom", "filter": "gb1" },
+    { "program": "GB2", "naslov": "Nadaljevalni", "komu": "Od 3. stopnje belega pasu", "opis": "Tehnike in vaje visokega nivoja: refleksi, hitrost, odzivni čas in prehodi med tehnikami. Tu se oblikuje tvoj stil.", "slika": "/img/ig10.jpg", "alt": "Podelitev pasu", "filter": "gb2" },
+    { "program": "GB3", "naslov": "Napredni", "komu": "Od modrega pasu dalje", "opis": "Program za ustvarjanje črnih pasov. GB3 učenci so vzor v šoli in skrbijo za prijazno, varno okolje za vse.", "slika": "/img/ig03.jpg", "alt": "Vijolični in črni pas v modrih kimonih", "filter": "gb2" },
+    { "program": "GBF", "naslov": "Ženske", "komu": "Samo za ženske · Prvi mesec brezplačno", "opis": "Samoobramba, samozavest in kondicija v sproščeni ženski skupini. Brez predznanja.", "slika": "/img/ig02.jpg", "alt": "Trening na blazini Gracie Barra", "filter": "gbf" },
+    { "program": "NOGI", "naslov": "Brez kimona", "komu": "Odrasli · GB2 nivo", "opis": "Jiu-jitsu v majici in kratkih hlačah — hitrejši tempo, drugačni prijemi. Odlična dopolnitev treningov v kimonu.", "slika": "/img/ig08.jpg", "alt": "Skupina s certifikati na blazini", "filter": "nogi" }
+  ]
+}

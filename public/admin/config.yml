@@ -1,0 +1,191 @@
+backend:
+  name: github
+  repo: chrassy/gbdomzale-redesign
+  branch: main
+
+media_folder: public/img
+public_folder: /img
+
+locale: sl
+
+collections:
+  - name: urnik
+    label: Urnik
+    files:
+      - name: urnik
+        label: Urnik treningov
+        file: src/data/urnik.json
+        description: Vsak trening je ena vrstica. Spremembe so na strani vidne po nekaj minutah.
+        fields:
+          - { name: sezona, label: Sezona, widget: string, hint: "Na primer 2026/2027" }
+          - { name: opomba, label: Opomba pod urnikom, widget: string }
+          - { name: legenda, label: Legenda starostnih skupin, widget: string }
+          - name: termini
+            label: Termini
+            label_singular: termin
+            widget: list
+            summary: "{{fields.dan}} {{fields.ura}} — {{fields.skupina}}"
+            fields:
+              - name: dan
+                label: Dan
+                widget: select
+                options:
+                  - { label: Ponedeljek, value: pon }
+                  - { label: Torek, value: tor }
+                  - { label: Sreda, value: sre }
+                  - { label: Četrtek, value: cet }
+                  - { label: Petek, value: pet }
+                  - { label: Sobota, value: sob }
+              - { name: ura, label: Ura, widget: string, pattern: ['^\d{2}:\d{2}$', 'Zapiši v obliki 18:30'] }
+              - name: programi
+                label: Program
+                widget: select
+                multiple: true
+                options:
+                  - { label: "GBK — otroci", value: GBK }
+                  - { label: "GB1 — začetniki", value: GB1 }
+                  - { label: "GB2 — nadaljevalni", value: GB2 }
+                  - { label: "GB3 — napredni", value: GB3 }
+                  - { label: "GBF — ženske", value: GBF }
+                  - { label: "No-Gi — brez kimona", value: NOGI }
+              - { name: skupina, label: Skupina, widget: string, hint: "Na primer: GBK 2 · 7–9 let" }
+
+  - name: nastavitve
+    label: Stran
+    files:
+      - name: nastavitve
+        label: Naslovnica in kontakt
+        file: src/data/nastavitve.json
+        fields:
+          - name: promo
+            label: Pasica z akcijo
+            widget: object
+            fields:
+              - { name: vklop, label: Prikaži pasico, widget: boolean, default: true }
+              - { name: oznaka, label: Oznaka, widget: string }
+              - { name: besedilo, label: Besedilo, widget: string }
+              - { name: povezava_besedilo, label: Besedilo povezave, widget: string }
+              - { name: povezava, label: Povezava, widget: string }
+              - { name: filter, label: Filter urnika, widget: string, required: false }
+          - name: hero
+            label: Naslovni del z videom
+            widget: object
+            fields:
+              - { name: nadnaslov, label: Nadnaslov, widget: string }
+              - { name: naslov, label: Naslov, widget: string }
+              - { name: naslov_poudarek, label: Rdeči del naslova, widget: string }
+              - { name: besedilo, label: Besedilo, widget: text }
+              - { name: video_desktop, label: Video za računalnik, widget: file, media_folder: public/video, public_folder: /video }
+              - { name: video_mobile, label: Video za telefon, widget: file, media_folder: public/video, public_folder: /video }
+              - { name: video_slika, label: Slika prvega kadra, widget: image, media_folder: public/video, public_folder: /video }
+          - name: dejstva
+            label: Modri pas s podatki
+            widget: list
+            summary: "{{fields.vrednost}}"
+            fields:
+              - { name: vrednost, label: Podatek, widget: string }
+              - { name: opis, label: Opis, widget: string }
+          - name: koraki
+            label: Kako začnem
+            widget: list
+            summary: "{{fields.naslov}}"
+            fields:
+              - { name: naslov, label: Naslov, widget: string }
+              - { name: opis, label: Opis, widget: text }
+          - name: zakaj
+            label: Zakaj Gracie Barra
+            widget: object
+            fields:
+              - { name: naslov, label: Naslov, widget: string }
+              - { name: slika1, label: Slika levo, widget: image }
+              - { name: slika2, label: Slika desno, widget: image }
+              - name: tocke
+                label: Točke
+                widget: list
+                summary: "{{fields.naslov}}"
+                fields:
+                  - { name: naslov, label: Naslov, widget: string }
+                  - { name: opis, label: Opis, widget: text }
+          - name: citat
+            label: Citat
+            widget: object
+            fields:
+              - { name: besedilo, label: Citat, widget: text }
+              - { name: vir, label: Avtor, widget: string }
+              - { name: slika, label: Slika, widget: image }
+          - name: kontakt
+            label: Kontakt
+            widget: object
+            fields:
+              - { name: naslov_vrstica1, label: Ulica, widget: string }
+              - { name: naslov_vrstica2, label: Kraj, widget: string }
+              - { name: email, label: E-pošta, widget: string }
+              - { name: instagram, label: Instagram, widget: string }
+              - { name: facebook, label: Facebook, widget: string }
+              - { name: zemljevid, label: Povezava na zemljevid, widget: string }
+              - { name: opis, label: Kratek opis v nogi, widget: text }
+
+  - name: programi
+    label: Programi
+    files:
+      - name: programi
+        label: Programi
+        file: src/data/programi.json
+        fields:
+          - { name: naslov, label: Naslov razdelka, widget: string }
+          - { name: besedilo, label: Uvodno besedilo, widget: text }
+          - name: seznam
+            label: Programi
+            label_singular: program
+            widget: list
+            summary: "{{fields.program}} — {{fields.naslov}}"
+            fields:
+              - name: program
+                label: Oznaka
+                widget: select
+                options: [GBK, GB1, GB2, GB3, GBF, NOGI]
+              - { name: naslov, label: Naslov, widget: string }
+              - { name: komu, label: Komu je namenjen, widget: string }
+              - { name: opis, label: Opis, widget: text }
+              - { name: slika, label: Slika, widget: image }
+              - { name: alt, label: Opis slike za slepe in Google, widget: string }
+              - name: filter
+                label: Filter urnika
+                widget: select
+                options: [gbk, gb1, gb2, gbf, nogi]
+
+  - name: instruktorji
+    label: Inštruktorji
+    files:
+      - name: instruktorji
+        label: Inštruktorji
+        file: src/data/instruktorji.json
+        fields:
+          - name: seznam
+            label: Inštruktorji
+            label_singular: inštruktor
+            widget: list
+            summary: "{{fields.ime}}"
+            fields:
+              - { name: ime, label: Ime, widget: string }
+              - { name: vloga, label: Vloga, widget: string }
+              - { name: slika, label: Fotografija, widget: image }
+              - { name: opis, label: Predstavitev, widget: text }
+              - { name: znacke, label: Značke, widget: list, field: { name: znacka, label: Značka, widget: string } }
+
+  - name: galerija
+    label: Galerija
+    files:
+      - name: galerija
+        label: Slike z Instagrama
+        file: src/data/galerija.json
+        fields:
+          - name: seznam
+            label: Slike
+            label_singular: slika
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - { name: slika, label: Slika, widget: image }
+              - { name: alt, label: Opis slike, widget: string }
+              - { name: povezava, label: Povezava na objavo, widget: string }

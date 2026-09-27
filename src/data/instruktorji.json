@@ -1,0 +1,18 @@
+{
+  "seznam": [
+    {
+      "ime": "Prof. Carlos Maia",
+      "vloga": "Glavni inštruktor",
+      "slika": "/img/maia.jpg",
+      "opis": "Rojen in odraščal v Riu de Janeiru, kjer je nanj pečat pustila glavna Gracie Barra šola v Braziliji. Eden izmed pionirjev brazilskega jiu-jitsa v Sloveniji — s ciljem uresničiti »Jiu-Jitsu za vsakogar« tudi na tem koncu sveta.",
+      "znacke": ["GB Legacy Award 2019", "25+ let v Gracie Barra", "Pionir BJJ v Sloveniji"]
+    },
+    {
+      "ime": "Prof. Uroš Koplan",
+      "vloga": "Inštruktor · otroci in odrasli",
+      "slika": "/img/uros.jpg",
+      "opis": "Gracie Barra inštruktor z dvajsetletnimi izkušnjami v borilnih veščinah. Pod mentorstvom prof. Carlosa Maie deli znanje, filozofijo in vrednote jiu-jitsa ter pomaga drugim postati najboljša verzija sebe.",
+      "znacke": ["Črni pas, 3. stopnja", "20 let izkušenj", "Otroške in odrasle skupine"]
+    }
+  ]
+}

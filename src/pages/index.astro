@@ -1,0 +1,463 @@
+---
+import '../styles/site.css';
+import nastavitve from '../data/nastavitve.json';
+import urnik from '../data/urnik.json';
+import programi from '../data/programi.json';
+import instruktorji from '../data/instruktorji.json';
+import galerija from '../data/galerija.json';
+
+const { promo, hero, dejstva, koraki, zakaj, citat, kontakt } = nastavitve;
+
+// Poti do slik delujejo na GitHub Pages (podmapa) in na lastni domeni.
+const asset = (p) => import.meta.env.BASE_URL.replace(/\/$/, '') + '/' + String(p).replace(/^\//, '');
+
+const DNEVI = [
+  { kljuc: 'pon', kratko: 'Pon', dolgo: 'ponedeljek' },
+  { kljuc: 'tor', kratko: 'Tor', dolgo: 'torek' },
+  { kljuc: 'sre', kratko: 'Sre', dolgo: 'sreda' },
+  { kljuc: 'cet', kratko: 'Čet', dolgo: 'četrtek' },
+  { kljuc: 'pet', kratko: 'Pet', dolgo: 'petek' },
+  { kljuc: 'sob', kratko: 'Sob', dolgo: 'sobota' },
+];
+const ZNACKE = {
+  GBK: { gb: 'GB', znak: 'K', razred: 'gbk' },
+  GB1: { gb: 'GB', znak: '1', razred: 'gb1' },
+  GB2: { gb: 'GB', znak: '2', razred: 'gb2' },
+  GB3: { gb: 'GB', znak: '3', razred: 'gb3' },
+  GBF: { gb: 'GB', znak: 'F', razred: 'gbf' },
+  NOGI: { gb: 'No', znak: 'Gi', razred: 'nogi' },
+};
+const FILTRI = [
+  { kljuc: 'all', naziv: 'Vsi' },
+  { kljuc: 'gbk', naziv: 'Otroci' },
+  { kljuc: 'gb1', naziv: 'Začetniki' },
+  { kljuc: 'gb2', naziv: 'GB2 / GB3' },
+  { kljuc: 'gbf', naziv: 'Ženske' },
+  { kljuc: 'nogi', naziv: 'No-Gi' },
+];
+
+// Termini z indeksom dneva, da jih lahko brskalnik filtrira brez ponovnega izračuna.
+const termini = urnik.termini.map((t, i) => ({
+  ...t,
+  i,
+  dan_i: DNEVI.findIndex((d) => d.kljuc === t.dan),
+}));
+const terminiPoDnevu = DNEVI.map((d, i) => termini.filter((t) => t.dan_i === i));
+const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kljuc));
+---
+
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Prototip prenove spletne strani Gracie Barra Domžale.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gracie Barra Domžale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap">
+</head>
+<body>
+
+{promo.vklop && (
+  <div class="promo" role="region" aria-label="Novica">
+    <div class="wrap">
+      <b>{promo.oznaka}</b>
+      <span>{promo.besedilo}</span>
+      <a href={promo.povezava} data-filter={promo.filter}>{promo.povezava_besedilo}</a>
+    </div>
+  </div>
+)}
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Gracie Barra Domžale — domov">
+      <img src={asset('/img/logo.png')} alt="" width="48" height="49">
+      <span>Gracie Barra<small>Domžale</small></span>
+    </a>
+    <nav class="nav" aria-label="Glavna navigacija">
+      <a href="#programi">Programi</a>
+      <a href="#urnik">Urnik</a>
+      <a href="#instruktorji">Inštruktorji</a>
+      <a href="#gb">O Gracie Barra</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="btn sm" data-book>Brezplačna uvodna ura</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-media" aria-hidden="true">
+    <video id="hero-video" muted loop playsinline preload="none" poster={asset(hero.video_slika)}
+      data-src-lg={asset(hero.video_desktop)} data-src-sm={asset(hero.video_mobile)}></video>
+  </div>
+  <svg class="hero-tri" viewBox="0 0 100 87" aria-hidden="true"><polygon points="50,1.5 98.5,85.5 1.5,85.5"/></svg>
+  <div class="wrap">
+    <div class="inner">
+      <span class="eyebrow">{hero.nadnaslov}</span>
+      <h1 id="hero-h">{hero.naslov} <em>{hero.naslov_poudarek}</em></h1>
+      <p class="lede">{hero.besedilo}</p>
+      <div class="ctas">
+        <button class="btn" data-book>Rezerviraj brezplačno uvodno uro <i class="arr">→</i></button>
+        <a class="btn ghost-light" href="#urnik">Poglej urnik</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="Na kratko">
+  <ul class="wrap">
+    {dejstva.map((d) => (
+      <li><strong>{d.vrednost}</strong><span>{d.opis}</span></li>
+    ))}
+  </ul>
+</section>
+
+<section class="steps" aria-labelledby="kako">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Kako začnem?</span>
+      <h2 id="kako">Preprosto.</h2>
+    </div>
+    <ol>
+      {koraki.map((k) => (
+        <li><h3>{k.naslov}</h3><p>{k.opis}</p></li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="programs" id="programi" aria-labelledby="prog-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">Programi</span>
+        <h2 id="prog-h">{programi.naslov}</h2>
+      </div>
+      <p class="lede">{programi.besedilo}</p>
+    </div>
+    <div class="prog-grid">
+      {programi.seznam.map((p) => (
+        <a class="prog" href="#urnik" data-filter={p.filter}>
+          <figure><img src={asset(p.slika)} alt={p.alt} loading="lazy"></figure>
+          <div class="body">
+            <span class={`badge k-${ZNACKE[p.program].razred}`}>
+              <span class="gb">{ZNACKE[p.program].gb}</span><span class="n">{ZNACKE[p.program].znak}</span>
+            </span>
+            <h3>{p.naslov}</h3>
+            <span class="who">{p.komu}</span>
+            <p class="desc">{p.opis}</p>
+            <div class="slots">
+              {terminiZaProgram(p.program).map((t) => (
+                <span>{DNEVI[t.dan_i].kratko} {t.ura}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="sched" id="urnik" aria-labelledby="urnik-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">Sezona {urnik.sezona}</span>
+        <h2 id="urnik-h">Urnik</h2>
+      </div>
+      <div class="chips" role="group" aria-label="Filtriraj po programu">
+        {FILTRI.map((f, i) => (
+          <button class="chip" data-f={f.kljuc} aria-pressed={i === 0 ? 'true' : 'false'}>{f.naziv}</button>
+        ))}
+      </div>
+    </div>
+    <div class="daytabs" role="tablist" aria-label="Dan v tednu">
+      {DNEVI.map((d, i) => (
+        <button class="daytab" role="tab" data-day={i} aria-selected={i === 0 ? 'true' : 'false'}>{d.kratko}</button>
+      ))}
+    </div>
+    <div class="days">
+      {DNEVI.map((d, i) => (
+        <div class="day" data-day={i}>
+          <h4>{d.kratko}</h4>
+          {terminiPoDnevu[i].map((t) => (
+            <div class="cls" data-i={t.i}>
+              <time>{t.ura}</time>
+              <div class="badges">
+                {t.programi.map((k) => (
+                  <span class={`badge k-${ZNACKE[k].razred}`}>
+                    <span class="gb">{ZNACKE[k].gb}</span><span class="n">{ZNACKE[k].znak}</span>
+                  </span>
+                ))}
+              </div>
+              <div class="grp">{t.skupina}</div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+    <div class="sched-foot">
+      <span>{urnik.opomba}</span>
+      <span>{urnik.legenda}</span>
+      <button class="btn white sm" data-book>Rezerviraj termin <i class="arr">→</i></button>
+    </div>
+  </div>
+</section>
+
+<section class="coaches" id="instruktorji" aria-labelledby="coach-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Inštruktorji</span>
+      <h2 id="coach-h">Kdo te uči</h2>
+    </div>
+    <div class="coach-grid">
+      {instruktorji.seznam.map((o) => (
+        <article class="coach">
+          <div class="ph"><img src={asset(o.slika)} alt={o.ime} loading="lazy"></div>
+          <div>
+            <div class="role">{o.vloga}</div>
+            <h3>{o.ime}</h3>
+            <p>{o.opis}</p>
+            <ul class="creds">
+              {o.znacke.map((z, i) => (
+                <li class={i === 0 ? 'hi' : undefined}>{z}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="why" id="gb" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="why-ph" aria-hidden="true">
+      <img src={asset(zakaj.slika1)} alt="" loading="lazy">
+      <img src={asset(zakaj.slika2)} alt="" loading="lazy">
+    </div>
+    <div>
+      <span class="eyebrow">Zakaj Gracie Barra</span>
+      <h2 id="why-h" style="margin-top:16px">{zakaj.naslov}</h2>
+      <ul>
+        {zakaj.tocke.map((t) => (
+          <li><div><b>{t.naslov}</b><span>{t.opis}</span></div></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="creed" aria-label="Vrednote">
+  <div class="wrap">
+    <div class="cgj"><img src={asset(citat.slika)} alt="Carlos Gracie ml." loading="lazy"></div>
+    <div>
+      <blockquote>{citat.besedilo}</blockquote>
+      <cite>{citat.vir}</cite>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="values" aria-label="Bratovščina, integriteta, razvoj"><span>Bratovščina</span><span>Integriteta</span><span>Razvoj</span></div>
+  </div>
+</section>
+
+<section class="feed" aria-labelledby="feed-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">Z naše blazine</span>
+        <h2 id="feed-h">@gbdomzale</h2>
+      </div>
+      <a class="btn ghost" href={kontakt.instagram} target="_blank" rel="noopener">Sledi na Instagramu <i class="arr">→</i></a>
+    </div>
+    <div class="feed-grid">
+      {galerija.seznam.map((g) => (
+        <a href={g.povezava} target="_blank" rel="noopener"><img src={asset(g.slika)} alt={g.alt} loading="lazy"></a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap">
+    <div>
+      <h2 id="cta-h">Prvi trening je na nas</h2>
+      <p>Brezplačna individualna uvodna ura za otroke in odrasle. Izberi termin — ostalo uredimo mi.</p>
+    </div>
+    <button class="btn white" data-book>Rezerviraj brezplačno uvodno uro <i class="arr">→</i></button>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="kontakt">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand" href="#" aria-label="Gracie Barra Domžale"><img src={asset('/img/logo.png')} alt="" width="48" height="49"><span>Gracie Barra<small>Domžale</small></span></a>
+        <p style="margin-top:16px;max-width:32ch">{kontakt.opis}</p>
+      </div>
+      <div>
+        <h4>Kje smo</h4>
+        <ul>
+          <li>{kontakt.naslov_vrstica1}<br>{kontakt.naslov_vrstica2}</li>
+          <li><a href={kontakt.zemljevid} target="_blank" rel="noopener">Odpri zemljevid →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href={`mailto:${kontakt.email}`}>{kontakt.email}</a></li>
+          <li><a href={kontakt.instagram} target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href={kontakt.facebook} target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Šola</h4>
+        <ul>
+          <li><a href="#programi">Programi</a></li>
+          <li><a href="#urnik">Urnik {urnik.sezona}</a></li>
+          <li><a href="#kontakt">Cenik</a></li>
+          <li><a href="#kontakt">Pogoji poslovanja</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal"><span>© 2026 Gracie Barra Domžale</span><span>Jiu-Jitsu for Everyone®</span></div>
+  </div>
+</footer>
+
+<div class="mcta"><button class="btn" data-book>Brezplačna uvodna ura <i class="arr">→</i></button></div>
+
+<dialog id="book" aria-labelledby="book-h">
+  <div class="dlg-head">
+    <button class="x" type="button" aria-label="Zapri" data-close>×</button>
+    <h2 id="book-h">Brezplačna uvodna ura</h2>
+    <p>Izberi program in termin. Potrditev prejmeš po e-pošti.</p>
+  </div>
+  <form class="book" id="book-form">
+    <div class="f"><label for="b-name">Ime in priimek</label><input id="b-name" name="name" required autocomplete="name" placeholder="Ana Novak"></div>
+    <div class="row2">
+      <div class="f"><label for="b-mail">E-pošta</label><input id="b-mail" name="email" type="email" required autocomplete="email" placeholder="ana@primer.si"></div>
+      <div class="f"><label for="b-tel">Telefon</label><input id="b-tel" name="tel" type="tel" autocomplete="tel" placeholder="041 123 456"></div>
+    </div>
+    <div class="row2">
+      <div class="f"><label for="b-prog">Program</label>
+        <select id="b-prog" name="prog">
+          <option value="gb1">Odrasli začetniki (GB1)</option>
+          <option value="gbk">Otroci (GBK)</option>
+          <option value="gbf">Ženske (GBF)</option>
+          <option value="gb2">Z izkušnjami (GB2/GB3)</option>
+          <option value="nogi">No-Gi</option>
+        </select>
+      </div>
+      <div class="f"><label for="b-slot">Termin</label><select id="b-slot" name="slot"></select></div>
+    </div>
+    <p class="note">Prototip — obrazec v tej različici še ne pošilja podatkov.</p>
+    <button class="btn" type="submit">Potrdi rezervacijo <i class="arr">→</i></button>
+  </form>
+  <div class="done" hidden>
+    <span class="eyebrow">Rezervirano</span>
+    <h3 id="done-h">Se vidimo na blazini!</h3>
+    <p id="done-p"></p>
+    <button class="btn" type="button" data-close>Zapri</button>
+  </div>
+</dialog>
+
+<script type="application/json" id="urnik-data" set:html={JSON.stringify({ dnevi: DNEVI, termini })}></script>
+
+<script>
+  // Video v ozadju: poster takoj, video samo kadar je smiselno
+  (() => {
+    const v = document.getElementById('hero-video');
+    if (!v) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = navigator.connection && (navigator.connection.saveData || /(^|-)2g$/.test(navigator.connection.effectiveType || ''));
+    if (reduce || saveData) return; // ostane poster
+    v.src = innerWidth < 768 ? v.dataset.srcSm : v.dataset.srcLg;
+    v.preload = 'auto';
+    v.play().catch(() => {});
+    // Ne troši baterije, ko hero ni viden
+    new IntersectionObserver(([e]) => {
+      e.isIntersecting ? v.play().catch(() => {}) : v.pause();
+    }, { threshold: 0.1 }).observe(v);
+  })();
+
+  // Urnik in rezervacija
+  (() => {
+    const { dnevi, termini } = JSON.parse(document.getElementById('urnik-data').textContent);
+    const FILTER = {
+      all: () => true,
+      gbk: (c) => c.programi.includes('GBK'),
+      gb1: (c) => c.programi.includes('GB1'),
+      gb2: (c) => c.programi.some((x) => x === 'GB2' || x === 'GB3'),
+      gbf: (c) => c.programi.includes('GBF'),
+      nogi: (c) => c.programi.includes('NOGI'),
+    };
+    const daysEl = document.querySelector('.days');
+    const tabsEl = document.querySelector('.daytabs');
+
+    // Današnji dan označimo v brskalniku, da ostane pravilen tudi brez nove gradnje.
+    const jsDay = new Date().getDay();
+    const today = jsDay === 0 ? -1 : jsDay - 1;
+    if (today >= 0) {
+      const el = daysEl.querySelector(`.day[data-day="${today}"]`);
+      el.classList.add('today');
+      el.querySelector('h4').insertAdjacentHTML('beforeend', '<small>Danes</small>');
+    }
+
+    const showDay = (i) => {
+      tabsEl.querySelectorAll('.daytab').forEach((b) => b.setAttribute('aria-selected', String(+b.dataset.day === i)));
+      daysEl.querySelectorAll('.day').forEach((d) => d.classList.toggle('show', +d.dataset.day === i));
+    };
+    tabsEl.addEventListener('click', (e) => {
+      const b = e.target.closest('.daytab');
+      if (b) showDay(+b.dataset.day);
+    });
+    showDay(today < 0 ? 0 : today);
+
+    const chips = document.querySelectorAll('.chip');
+    const applyFilter = (f) => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.f === f)));
+      daysEl.querySelectorAll('.cls').forEach((el) => el.classList.toggle('dim', !FILTER[f](termini[+el.dataset.i])));
+    };
+    chips.forEach((c) => c.addEventListener('click', () => applyFilter(c.dataset.f)));
+    document.querySelectorAll('[data-filter]').forEach((a) => a.addEventListener('click', () => applyFilter(a.dataset.filter)));
+
+    // Rezervacija
+    const dlg = document.getElementById('book');
+    const form = document.getElementById('book-form');
+    const done = dlg.querySelector('.done');
+    const prog = document.getElementById('b-prog');
+    const slot = document.getElementById('b-slot');
+    const fillSlots = () => {
+      slot.innerHTML = termini
+        .filter(FILTER[prog.value])
+        .map((c) => `<option>${dnevi[c.dan_i].dolgo} ${c.ura} — ${c.skupina}</option>`)
+        .join('');
+    };
+    prog.addEventListener('change', fillSlots);
+    fillSlots();
+    document.querySelectorAll('[data-book]').forEach((b) =>
+      b.addEventListener('click', () => {
+        form.hidden = false;
+        done.hidden = true;
+        dlg.showModal();
+      }),
+    );
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('b-name').value.trim().split(' ')[0] || '';
+      document.getElementById('done-h').textContent = `Se vidimo na blazini${name ? ', ' + name : ''}!`;
+      document.getElementById('done-p').textContent = `Tvoj termin: ${slot.value}. Potrditev z vsemi podrobnostmi pošljemo na ${document.getElementById('b-mail').value}.`;
+      form.hidden = true;
+      done.hidden = false;
+    });
+  })();
+</script>
+</body>
+</html>

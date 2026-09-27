@@ -1,0 +1,54 @@
+{
+  "promo": {
+    "vklop": true,
+    "oznaka": "Novo · GBF",
+    "besedilo": "Jiu-Jitsu za ženske — prvi mesec članarine brezplačen.",
+    "povezava_besedilo": "Poglej termine →",
+    "povezava": "#urnik",
+    "filter": "gbf"
+  },
+  "hero": {
+    "nadnaslov": "Uradna Gracie Barra šola · Dob pri Domžalah",
+    "naslov": "Jiu-Jitsu",
+    "naslov_poudarek": "za vsakogar",
+    "besedilo": "Brazilski jiu-jitsu za otroke od 5. leta, odrasle začetnike, izkušene tekmovalce in ženske. En standardiziran Gracie Barra program — od prvega belega pasu do črnega.",
+    "video_desktop": "/video/hero-1280.mp4",
+    "video_mobile": "/video/hero-854.mp4",
+    "video_slika": "/video/hero-poster.jpg"
+  },
+  "dejstva": [
+    { "vrednost": "Od 5. leta", "opis": "Otroške skupine po starosti" },
+    { "vrednost": "Vpis vse leto", "opis": "Ne le ob začetku cikla" },
+    { "vrednost": "6 dni v tednu", "opis": "Jutranji in večerni termini" },
+    { "vrednost": "25+ let v GB", "opis": "Prof. Carlos Maia, Legacy Award" }
+  ],
+  "koraki": [
+    { "naslov": "Rezerviraj uvodno uro", "opis": "Izpolni kratek obrazec in izberi termin. Prva ura je brezplačna in individualna — brez obveznosti." },
+    { "naslov": "Stopi na blazino", "opis": "Inštruktor ti pokaže osnove in te usmeri v skupino, ki ustreza tvoji starosti in predznanju." },
+    { "naslov": "Vpiši se, ko si pripravljen", "opis": "Vpisi potekajo skozi celotno leto, ne le ob začetku vsakega novega 16-tedenskega cikla." }
+  ],
+  "zakaj": {
+    "naslov": "Ena ekipa na petih celinah",
+    "slika1": "/img/sola.jpg",
+    "slika2": "/img/ig12.jpg",
+    "tocke": [
+      { "naslov": "Standardiziran program", "opis": "GB1 → GB2 → GB3. Vsak napreduje v svojem tempu, a vedno ve, kje je." },
+      { "naslov": "Struktura in točnost", "opis": "Treningi se vedno začnejo ob dogovorjeni uri in sledijo enaki strukturi." },
+      { "naslov": "Treniraš lahko kjerkoli", "opis": "Več kot 1000 Gracie Barra šol po svetu — tvoja ekipa te čaka tudi na dopustu." }
+    ]
+  },
+  "citat": {
+    "besedilo": "»Moji učenci so del moje družine. Za prav vsakega od njih želim, da doseže svoj maksimalni potencial in z Jiu-Jitsom pomaga tudi drugim.«",
+    "vir": "Mojster Carlos Gracie ml. · ustanovitelj Gracie Barra",
+    "slika": "/img/cgj.jpg"
+  },
+  "kontakt": {
+    "naslov_vrstica1": "Ljubljanska cesta 1",
+    "naslov_vrstica2": "1233 Dob",
+    "email": "info@gbdomzale.si",
+    "instagram": "https://www.instagram.com/gbdomzale/",
+    "facebook": "https://www.facebook.com/gbdomzale",
+    "zemljevid": "https://www.google.com/maps/search/?api=1&query=Ljubljanska+cesta+1,+1233+Dob",
+    "opis": "Uradna Gracie Barra šola brazilskega jiu-jitsa. Del svetovne skupnosti Carlosa Gracieja ml."
+  }
+}

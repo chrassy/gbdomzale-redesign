@@ -1,0 +1,29 @@
+{
+  "sezona": "2026/2027",
+  "opomba": "Nedelja: zaprto.",
+  "legenda": "GBK 1: 5–6 let · GBK 2: 7–9 · GBK 3: 10–12 · GBK 4: 13–15",
+  "termini": [
+    { "dan": "pon", "ura": "09:00", "programi": ["GB1", "GB2"], "skupina": "Odrasli · jutranji" },
+    { "dan": "pon", "ura": "16:30", "programi": ["GBK"], "skupina": "GBK 2 · 7–9 let" },
+    { "dan": "pon", "ura": "17:30", "programi": ["GBK"], "skupina": "GBK 3 · 10–12 let" },
+    { "dan": "pon", "ura": "18:30", "programi": ["GB1"], "skupina": "Odrasli začetniki" },
+    { "dan": "pon", "ura": "18:30", "programi": ["GBF"], "skupina": "Ženske" },
+    { "dan": "pon", "ura": "19:30", "programi": ["GB2"], "skupina": "Odrasli" },
+    { "dan": "tor", "ura": "16:10", "programi": ["GBK"], "skupina": "GBK 1 · 5–6 let" },
+    { "dan": "tor", "ura": "17:00", "programi": ["GBK"], "skupina": "GBK 4 · 13–15 let" },
+    { "dan": "tor", "ura": "18:00", "programi": ["GB2"], "skupina": "Odrasli" },
+    { "dan": "sre", "ura": "09:00", "programi": ["GB1", "GB2"], "skupina": "Odrasli · jutranji" },
+    { "dan": "sre", "ura": "16:30", "programi": ["GBK"], "skupina": "GBK 2 · 7–9 let" },
+    { "dan": "sre", "ura": "17:30", "programi": ["GBK"], "skupina": "GBK 3 · 10–12 let" },
+    { "dan": "sre", "ura": "18:30", "programi": ["GB1"], "skupina": "Odrasli začetniki" },
+    { "dan": "sre", "ura": "18:30", "programi": ["GBF"], "skupina": "Ženske" },
+    { "dan": "sre", "ura": "19:30", "programi": ["NOGI"], "skupina": "Odrasli · brez kimona" },
+    { "dan": "cet", "ura": "16:10", "programi": ["GBK"], "skupina": "GBK 1 · 5–6 let" },
+    { "dan": "cet", "ura": "17:00", "programi": ["GBK"], "skupina": "GBK 4 · 13–15 let" },
+    { "dan": "cet", "ura": "18:00", "programi": ["GB2", "GB3"], "skupina": "Odrasli" },
+    { "dan": "pet", "ura": "17:00", "programi": ["GBK"], "skupina": "Napredni otroci" },
+    { "dan": "pet", "ura": "18:00", "programi": ["GB1"], "skupina": "Odrasli začetniki" },
+    { "dan": "pet", "ura": "19:10", "programi": ["NOGI"], "skupina": "Odrasli · brez kimona" },
+    { "dan": "sob", "ura": "09:00", "programi": ["GB1", "GB2"], "skupina": "Odrasli" }
+  ]
+}
