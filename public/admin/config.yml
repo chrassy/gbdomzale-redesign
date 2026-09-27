@@ -2,6 +2,8 @@ backend:
   name: github
   repo: chrassy/gbdomzale-redesign
   branch: main
+  # Posrednik za prijavo z GitHub računom (tools/cms-auth).
+  base_url: https://gbdomzale-cms-auth.aljaz-klanecek.workers.dev
 
 media_folder: public/img
 public_folder: /img
