@@ -1,0 +1,9 @@
+# Posrednik za prijavo v Sveltia CMS z GitHub računom.
+# Koda: https://github.com/sveltia/sveltia-cms-auth (MIT), src/index.js je kopija te kode.
+name = "gbdomzale-cms-auth"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Domene, ki se smejo prijavljati prek tega posrednika.
+ALLOWED_DOMAINS = "chrassy.github.io,gbdomzale.si,*.gbdomzale.si"
