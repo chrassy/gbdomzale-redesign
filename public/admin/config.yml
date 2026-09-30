@@ -4,6 +4,9 @@ backend:
   branch: main
   # Posrednik za prijavo z GitHub računom (tools/cms-auth).
   base_url: https://gbdomzale-cms-auth.aljaz-klanecek.workers.dev
+  # Prijava zahteva dostop samo do javnih repozitorijev, ne do zasebnih.
+  # Če repozitorij kdaj postane zaseben, tu nastavi 'repo'.
+  auth_scope: public_repo
 
 media_folder: public/img
 public_folder: /img
