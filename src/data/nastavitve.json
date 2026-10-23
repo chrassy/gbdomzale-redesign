@@ -13,8 +13,9 @@
     "naslov_poudarek": "za vsakogar",
     "besedilo": "Brazilski jiu-jitsu in samoobramba za otroke od 5. leta, odrasle začetnike, izkušene tekmovalce in ženske. En standardiziran Gracie Barra program — od prvega belega pasu do črnega.",
     "video_desktop": "/video/hero-1280.mp4",
-    "video_mobile": "/video/hero-854.mp4",
-    "video_slika": "/video/hero-poster.jpg"
+    "video_mobile": "/video/hero-mobile.mp4",
+    "video_slika": "/video/hero-poster.jpg",
+    "video_slika_mobile": "/video/hero-mobile-poster.jpg"
   },
   "dejstva": [
     {
