@@ -6,4 +6,4 @@ compatibility_date = "2026-09-01"
 
 [vars]
 # Domene, ki se smejo prijavljati prek tega posrednika.
-ALLOWED_DOMAINS = "chrassy.github.io,gbdomzale.si,*.gbdomzale.si"
+ALLOWED_DOMAINS = "chrassy.github.io,gbdomzale.pages.dev,*.gbdomzale.pages.dev,gbdomzale.si,*.gbdomzale.si"
