@@ -17,13 +17,13 @@
     { "dan": "sre", "ura": "17:30", "programi": ["GBK"], "skupina": "GBK 3 · 10–12 let" },
     { "dan": "sre", "ura": "18:30", "programi": ["GB1"], "skupina": "Odrasli začetniki" },
     { "dan": "sre", "ura": "18:30", "programi": ["GBF"], "skupina": "Ženske" },
-    { "dan": "sre", "ura": "19:30", "programi": ["NOGI"], "skupina": "Odrasli · brez kimona" },
+    { "dan": "sre", "ura": "19:30", "programi": ["GB2", "NOGI"], "skupina": "Odrasli · brez kimona" },
     { "dan": "cet", "ura": "16:10", "programi": ["GBK"], "skupina": "GBK 1 · 5–6 let" },
     { "dan": "cet", "ura": "17:00", "programi": ["GBK"], "skupina": "GBK 4 · 13–15 let" },
     { "dan": "cet", "ura": "18:00", "programi": ["GB2", "GB3"], "skupina": "Odrasli" },
     { "dan": "pet", "ura": "17:00", "programi": ["GBK"], "skupina": "Napredni otroci" },
     { "dan": "pet", "ura": "18:00", "programi": ["GB1"], "skupina": "Odrasli začetniki" },
-    { "dan": "pet", "ura": "19:10", "programi": ["NOGI"], "skupina": "Odrasli · brez kimona" },
+    { "dan": "pet", "ura": "19:10", "programi": ["GB2", "NOGI"], "skupina": "Odrasli · brez kimona" },
     { "dan": "sob", "ura": "09:00", "programi": ["GB1", "GB2"], "skupina": "Odrasli" }
   ]
 }

@@ -178,23 +178,6 @@ p{margin:0}
   .cls time{grid-row:span 2}
 }
 
-/* Instructors */
-.coaches{padding-block:var(--section)}
-.coach-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
-@media (max-width:820px){.coach-grid{grid-template-columns:1fr}}
-.coach{display:grid;grid-template-columns:clamp(130px,16vw,190px) 1fr;gap:clamp(18px,2.5vw,32px);align-items:start}
-.coach .ph{position:relative;aspect-ratio:190/248;background:var(--mist)}
-.coach .ph img{width:100%;height:100%;object-fit:cover}
-.coach .ph::after{content:"";position:absolute;left:-10px;bottom:-10px;width:44%;aspect-ratio:1/.87;background:var(--red);clip-path:polygon(0 0,100% 100%,0 100%);z-index:-1}
-.coach .ph{isolation:isolate}
-.coach .role{font:700 14px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
-.coach h3{font-size:clamp(32px,3.4vw,44px);margin-bottom:14px}
-.coach p{color:var(--muted);font-size:16px}
-.creds{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;padding:0;list-style:none}
-.creds li{font:700 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--ink);padding:7px 10px 6px}
-.creds li.hi{background:var(--ink);color:#fff}
-@media (max-width:460px){.coach{grid-template-columns:1fr}.coach .ph{max-width:180px}}
-
 /* Why GB */
 .why{background:var(--mist);padding-block:var(--section)}
 .why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
@@ -286,3 +269,62 @@ form.book{padding:22px 24px 26px;display:grid;gap:14px}
 .book .err{font-size:14.5px;color:var(--red-deep);background:#FDECEC;border-left:3px solid var(--red);padding:10px 12px}
 .book .err a{color:inherit}
 .book button[disabled]{opacity:.6;cursor:progress}
+
+/* Podstran: glava */
+.page-head{position:relative;isolation:isolate;overflow:hidden;background:var(--blue-deep);color:#fff;padding-block:clamp(48px,7vw,96px) clamp(64px,9vw,120px)}
+.page-head::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:clamp(28px,4vw,56px);background:var(--paper);clip-path:polygon(0 100%,100% 0,100% 100%);z-index:-1}
+.page-head .eyebrow{color:#fff}
+.page-head .eyebrow::before{color:var(--red)}
+.page-head h1{font-size:clamp(44px,7vw,96px);font-weight:900;line-height:.86;margin:16px 0 18px;max-width:14ch}
+.page-head .meta{font:700 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:#C9D4F2}
+@media (max-width:760px){.page-head .hero-tri{width:70vw;right:-24vw;opacity:.6}}
+
+/* Pravno besedilo s kazalom */
+.legal-doc{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:start;padding-block:clamp(40px,6vw,80px) var(--section)}
+@media (max-width:900px){.legal-doc{grid-template-columns:1fr}}
+.toc{position:sticky;top:96px}
+@media (max-width:900px){.toc{position:static;background:var(--mist);padding:20px 22px}}
+.toc h2{font-size:22px;margin-bottom:14px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;border-left:2px solid var(--line)}
+.toc a{display:block;padding:7px 0 7px 14px;margin-left:-2px;border-left:2px solid transparent;font:700 15px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.toc a:hover{color:var(--ink);border-color:var(--red)}
+.toc a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.prose{max-width:68ch;font-size:17px;line-height:1.7}
+.prose > * + *{margin-top:1em}
+.prose h2{font-size:clamp(30px,3.4vw,40px);margin-top:2.2em;padding-top:18px;border-top:3px solid var(--ink);scroll-margin-top:96px}
+.prose h2 + *{margin-top:.9em}
+.prose ul{padding-left:0;list-style:none;display:grid;gap:6px}
+.prose li{display:grid;grid-template-columns:auto 1fr;gap:12px}
+.prose li::before{content:"";width:11px;height:9px;margin-top:9px;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.prose a{color:var(--blue);text-underline-offset:3px}
+.prose strong{font-weight:700}
+
+/* Cenik */
+.prices{padding-block:clamp(40px,6vw,80px) var(--section)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+@media (max-width:900px){.price-grid{grid-template-columns:1fr}}
+.price{position:relative;background:var(--mist);border-top:4px solid var(--ink);padding:28px clamp(20px,2.4vw,28px) 24px;display:grid;grid-template-rows:auto auto 1fr;gap:12px}
+.price.hi{border-color:var(--red)}
+.price h3{font-size:clamp(28px,2.6vw,34px)}
+.price .tag{position:absolute;top:-4px;right:clamp(20px,2.4vw,28px);transform:translateY(-50%);font:800 14px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);padding:6px 9px 5px}
+.price .desc{color:var(--muted);font-size:16px}
+.price dl{margin:8px 0 0;display:grid;align-self:end}
+.price dl div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-block:12px;border-top:1px solid var(--line)}
+.price dt{font:700 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase}
+.price dd{margin:0;text-align:right}
+.price dd b{font:900 italic clamp(36px,3.6vw,46px)/1 var(--display);font-variant-numeric:tabular-nums}
+.price dd span{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.h-sm{font-size:clamp(28px,3vw,36px);margin-bottom:18px}
+.price-more{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,5vw,72px);margin-top:clamp(40px,6vw,72px);align-items:start}
+@media (max-width:860px){.price-more{grid-template-columns:1fr}}
+.price-list{list-style:none;margin:0;padding:0;border-top:3px solid var(--ink)}
+.price-list li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:16px;border-bottom:1px solid var(--line)}
+.price-list b{display:block;font:800 italic 22px/1.1 var(--display);text-transform:uppercase}
+.price-list span{font-size:15px;color:var(--muted)}
+.price-list strong{font:900 italic 30px/1 var(--display);white-space:nowrap;font-variant-numeric:tabular-nums}
+.family{position:relative;isolation:isolate;overflow:hidden;background:var(--blue);color:#fff;padding:26px 28px 30px}
+.family::after{content:"";position:absolute;right:-24px;bottom:-30px;width:120px;aspect-ratio:1/.87;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%);z-index:-1}
+.family .h-sm{margin-bottom:10px}
+.family p{color:#DCE4FA;font-size:16px;max-width:34ch}
+.price-note{margin-top:32px;font-size:15px;color:var(--muted)}
+.price-note a{color:var(--blue);text-underline-offset:3px}

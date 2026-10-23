@@ -1,0 +1,72 @@
+---
+import Osnova from '../layouts/Osnova.astro';
+import cenik from '../data/cenik.json';
+
+const domov = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// 70 → "70 €", 73.2 → "73,20 €"
+const evri = (n) =>
+  new Intl.NumberFormat('sl-SI', { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 }).format(n) + ' €';
+---
+
+<Osnova naslov={`${cenik.naslov} — Gracie Barra Domžale`} opis="Cenik članarin in treningov brazilskega jiu-jitsa v Gracie Barra Domžale. Prva uvodna ura je brezplačna.">
+<main>
+  <section class="page-head" aria-labelledby="cenik-h">
+    <svg class="hero-tri" viewBox="0 0 100 87" aria-hidden="true"><polygon points="50,1.5 98.5,85.5 1.5,85.5"/></svg>
+    <div class="wrap">
+      <span class="eyebrow">Članarina</span>
+      <h1 id="cenik-h">{cenik.naslov}</h1>
+      <p class="meta">{cenik.velja}</p>
+    </div>
+  </section>
+
+  <section class="prices" aria-labelledby="clan-h">
+    <div class="wrap">
+      <div class="sec-head split">
+        <h2 id="clan-h">Članarine</h2>
+        <p class="lede">{cenik.uvod}</p>
+      </div>
+      <div class="price-grid">
+        {cenik.clanarine.map((c) => (
+          <article class:list={['price', { hi: c.poudarek }]}>
+            {c.poudarek && <span class="tag">{c.poudarek}</span>}
+            <h3>{c.naziv}</h3>
+            <p class="desc">{c.opis}</p>
+            <dl>
+              <div><dt>Otroci</dt><dd><b>{evri(c.otroci)}</b><span>{c.enota}</span></dd></div>
+              <div><dt>Odrasli</dt><dd><b>{evri(c.odrasli)}</b><span>{c.enota}</span></dd></div>
+            </dl>
+          </article>
+        ))}
+      </div>
+
+      <div class="price-more">
+        <div>
+          <h2 class="h-sm">Posamezni treningi</h2>
+          <ul class="price-list">
+            {cenik.ostalo.map((o) => (
+              <li><div><b>{o.naziv}</b><span>{o.opis}</span></div><strong>{evri(o.cena)}</strong></li>
+            ))}
+          </ul>
+        </div>
+        <aside class="family" aria-labelledby="pop-h">
+          <h2 id="pop-h" class="h-sm">{cenik.popust.naslov}</h2>
+          <p>{cenik.popust.besedilo}</p>
+        </aside>
+      </div>
+
+      <p class="price-note">Za članstvo veljajo <a href={domov + 'pogoji-poslovanja/'}>splošni pogoji poslovanja</a>.</p>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="wrap">
+      <div>
+        <h2 id="cta-h">Prvi trening je na nas</h2>
+        <p>Brezplačna individualna uvodna ura za otroke in odrasle. Izberi termin — ostalo uredimo mi.</p>
+      </div>
+      <a class="btn white" href={domov + '#prijava'}>Rezerviraj brezplačno uvodno uro <i class="arr">→</i></a>
+    </div>
+  </section>
+</main>
+</Osnova>

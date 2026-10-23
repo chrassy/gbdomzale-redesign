@@ -1,9 +1,8 @@
 ---
-import '../styles/site.css';
+import Osnova from '../layouts/Osnova.astro';
 import nastavitve from '../data/nastavitve.json';
 import urnik from '../data/urnik.json';
 import programi from '../data/programi.json';
-import instruktorji from '../data/instruktorji.json';
 import galerija from '../data/galerija.json';
 
 const { promo, hero, dejstva, koraki, zakaj, citat, kontakt } = nastavitve;
@@ -46,20 +45,8 @@ const terminiPoDnevu = DNEVI.map((d, i) => termini.filter((t) => t.dan_i === i))
 const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kljuc));
 ---
 
-<!doctype html>
-<html lang="sl">
-<head>
-<meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Prototip prenove spletne strani Gracie Barra Domžale.">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gracie Barra Domžale</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap">
-</head>
-<body>
-
+<Osnova naslovnica>
+<Fragment slot="pred-glavo">
 {promo.vklop && (
   <div class="promo" role="region" aria-label="Novica">
     <div class="wrap">
@@ -69,23 +56,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
     </div>
   </div>
 )}
-
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#" aria-label="Gracie Barra Domžale — domov">
-      <img src={asset('/img/logo.png')} alt="" width="48" height="49">
-      <span>Gracie Barra<small>Domžale</small></span>
-    </a>
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a href="#programi">Programi</a>
-      <a href="#urnik">Urnik</a>
-      <a href="#instruktorji">Inštruktorji</a>
-      <a href="#gb">O Gracie Barra</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-    <button class="btn sm" data-book>Brezplačna uvodna ura</button>
-  </div>
-</header>
+</Fragment>
 
 <main>
 <section class="hero" aria-labelledby="hero-h">
@@ -207,32 +178,6 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
   </div>
 </section>
 
-<section class="coaches" id="instruktorji" aria-labelledby="coach-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Inštruktorji</span>
-      <h2 id="coach-h">Kdo te uči</h2>
-    </div>
-    <div class="coach-grid">
-      {instruktorji.seznam.map((o) => (
-        <article class="coach">
-          <div class="ph"><img src={asset(o.slika)} alt={o.ime} loading="lazy"></div>
-          <div>
-            <div class="role">{o.vloga}</div>
-            <h3>{o.ime}</h3>
-            <p>{o.opis}</p>
-            <ul class="creds">
-              {o.znacke.map((z, i) => (
-                <li class={i === 0 ? 'hi' : undefined}>{z}</li>
-              ))}
-            </ul>
-          </div>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
-
 <section class="why" id="gb" aria-labelledby="why-h">
   <div class="wrap">
     <div class="why-ph" aria-hidden="true">
@@ -292,44 +237,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
 </section>
 </main>
 
-<footer class="foot" id="kontakt">
-  <div class="wrap">
-    <div class="grid">
-      <div>
-        <a class="brand" href="#" aria-label="Gracie Barra Domžale"><img src={asset('/img/logo.png')} alt="" width="48" height="49"><span>Gracie Barra<small>Domžale</small></span></a>
-        <p style="margin-top:16px;max-width:32ch">{kontakt.opis}</p>
-      </div>
-      <div>
-        <h4>Kje smo</h4>
-        <ul>
-          <li>{kontakt.naslov_vrstica1}<br>{kontakt.naslov_vrstica2}</li>
-          <li><a href={kontakt.zemljevid} target="_blank" rel="noopener">Odpri zemljevid →</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href={`mailto:${kontakt.email}`}>{kontakt.email}</a></li>
-          <li><a href={kontakt.instagram} target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href={kontakt.facebook} target="_blank" rel="noopener">Facebook</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Šola</h4>
-        <ul>
-          <li><a href="#programi">Programi</a></li>
-          <li><a href="#urnik">Urnik {urnik.sezona}</a></li>
-          <li><a href="#kontakt">Cenik</a></li>
-          <li><a href="#kontakt">Pogoji poslovanja</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="legal"><span>© 2026 Gracie Barra Domžale</span><span>Jiu-Jitsu for Everyone®</span></div>
-  </div>
-</footer>
-
-<div class="mcta"><button class="btn" data-book>Brezplačna uvodna ura <i class="arr">→</i></button></div>
-
+<Fragment slot="po-nogi">
 <dialog id="book" aria-labelledby="book-h">
   <div class="dlg-head">
     <button class="x" type="button" aria-label="Zapri" data-close>×</button>
@@ -445,13 +353,17 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
     };
     prog.addEventListener('change', fillSlots);
     fillSlots();
-    document.querySelectorAll('[data-book]').forEach((b) =>
-      b.addEventListener('click', () => {
-        form.hidden = false;
-        done.hidden = true;
-        dlg.showModal();
-      }),
-    );
+    const openBook = () => {
+      form.hidden = false;
+      done.hidden = true;
+      dlg.showModal();
+    };
+    document.querySelectorAll('[data-book]').forEach((b) => b.addEventListener('click', openBook));
+    // Podstrani gumb za uvodno uro vodijo na naslovnico z #prijava.
+    if (location.hash === '#prijava') {
+      history.replaceState(null, '', location.pathname + location.search);
+      openBook();
+    }
     dlg.addEventListener('click', (e) => {
       if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
     });
@@ -508,5 +420,5 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
     });
   })();
 </script>
-</body>
-</html>
+</Fragment>
+</Osnova>

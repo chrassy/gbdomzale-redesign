@@ -159,24 +159,57 @@ collections:
                 widget: select
                 options: [gbk, gb1, gb2, gbf, nogi]
 
-  - name: instruktorji
-    label: Inštruktorji
+  - name: cenik
+    label: Cenik
     files:
-      - name: instruktorji
-        label: Inštruktorji
-        file: src/data/instruktorji.json
+      - name: cenik
+        label: Cenik
+        file: src/data/cenik.json
+        description: Cene vpiši kot številke (73.2), na strani se izpišejo kot »73,20 €«.
         fields:
-          - name: seznam
-            label: Inštruktorji
-            label_singular: inštruktor
+          - { name: naslov, label: Naslov strani, widget: string }
+          - { name: velja, label: Velja od, widget: string, hint: "Na primer: Velja od 1. 8. 2026 · cene z DDV" }
+          - { name: uvod, label: Uvodno besedilo, widget: text }
+          - name: clanarine
+            label: Članarine
+            label_singular: članarina
             widget: list
-            summary: "{{fields.ime}}"
+            summary: "{{fields.naziv}} — {{fields.otroci}} / {{fields.odrasli}} €"
             fields:
-              - { name: ime, label: Ime, widget: string }
-              - { name: vloga, label: Vloga, widget: string }
-              - { name: slika, label: Fotografija, widget: image }
-              - { name: opis, label: Predstavitev, widget: text }
-              - { name: znacke, label: Značke, widget: list, field: { name: znacka, label: Značka, widget: string } }
+              - { name: naziv, label: Naziv, widget: string }
+              - { name: opis, label: Opis, widget: string }
+              - { name: otroci, label: Cena za otroke (€), widget: number, value_type: float }
+              - { name: odrasli, label: Cena za odrasle (€), widget: number, value_type: float }
+              - { name: enota, label: Enota, widget: string, hint: "Na primer: na mesec, za 12 mesecev" }
+              - { name: poudarek, label: Rdeča oznaka, widget: string, required: false, hint: "Prazno = brez oznake" }
+          - name: ostalo
+            label: Posamezni treningi
+            label_singular: postavka
+            widget: list
+            summary: "{{fields.naziv}} — {{fields.cena}} €"
+            fields:
+              - { name: naziv, label: Naziv, widget: string }
+              - { name: opis, label: Opis, widget: string }
+              - { name: cena, label: Cena (€), widget: number, value_type: float }
+          - name: popust
+            label: Družinski popust
+            widget: object
+            fields:
+              - { name: naslov, label: Naslov, widget: string }
+              - { name: besedilo, label: Besedilo, widget: text }
+
+  - name: pogoji
+    label: Pogoji poslovanja
+    files:
+      - name: pogoji
+        label: Splošni pogoji poslovanja
+        file: src/data/pogoji.md
+        format: frontmatter
+        description: Vsako poglavje začni z naslovom (## v urejevalniku), da se pojavi v kazalu na strani.
+        fields:
+          - { name: naslov, label: Naslov strani, widget: string }
+          - { name: verzija, label: Verzija in datum sprejetja, widget: string, hint: "Na primer: Verzija 4.0 (sprejeta 1. 8. 2026)" }
+          - { name: body, label: Besedilo, widget: markdown }
 
   - name: galerija
     label: Galerija
