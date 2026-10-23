@@ -13,8 +13,9 @@ Open `/admin`, sign in with GitHub (or with a fine-grained personal access token
 | Urnik | `src/data/urnik.json` |
 | Stran (promo banner, hero, facts, steps, why, quote, contact) | `src/data/nastavitve.json` |
 | Programi | `src/data/programi.json` |
-| Inštruktorji | `src/data/instruktorji.json` |
 | Galerija | `src/data/galerija.json` |
+| Cenik | `src/data/cenik.json` (stran `/cenik/`) |
+| Pogoji poslovanja | `src/data/pogoji.md` (stran `/pogoji-poslovanja/`) |
 
 Images upload to `public/img`, videos live in `public/video`. The schedule is rendered at build time, so search engines see it; the browser only handles filtering, day tabs, the "today" marker and the booking dialog.
 

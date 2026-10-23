@@ -1,0 +1,33 @@
+---
+import Osnova from '../layouts/Osnova.astro';
+import { Content, frontmatter, getHeadings } from '../data/pogoji.md';
+
+const poglavja = getHeadings().filter((h) => h.depth === 2);
+---
+
+<Osnova naslov={`${frontmatter.naslov} — Gracie Barra Domžale`} opis="Splošni pogoji poslovanja kluba Gracie Barra Domžale: programi, članstvo, članarina in varstvo osebnih podatkov.">
+<main>
+  <section class="page-head" aria-labelledby="pogoji-h">
+    <svg class="hero-tri" viewBox="0 0 100 87" aria-hidden="true"><polygon points="50,1.5 98.5,85.5 1.5,85.5"/></svg>
+    <div class="wrap">
+      <span class="eyebrow">Za člane</span>
+      <h1 id="pogoji-h">{frontmatter.naslov}</h1>
+      <p class="meta">{frontmatter.verzija}</p>
+    </div>
+  </section>
+
+  <div class="wrap legal-doc">
+    {poglavja.length > 0 && (
+      <nav class="toc" aria-label="Poglavja">
+        <h2>Poglavja</h2>
+        <ol>
+          {poglavja.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+        </ol>
+      </nav>
+    )}
+    <article class="prose">
+      <Content />
+    </article>
+  </div>
+</main>
+</Osnova>

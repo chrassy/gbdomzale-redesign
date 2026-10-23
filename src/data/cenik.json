@@ -1,0 +1,40 @@
+{
+  "naslov": "Cenik",
+  "velja": "Velja od 1. 8. 2026 · cene z DDV",
+  "uvod": "Prva ura je brezplačna. Potem izbereš članarino, ki ti ustreza — mesečno, z letno vezavo ali z enkratnim plačilom za celo leto.",
+  "clanarine": [
+    {
+      "naziv": "Mesečna članarina",
+      "opis": "Brez vezave. Plačilo za tekoči mesec po računu.",
+      "otroci": 70,
+      "odrasli": 90,
+      "enota": "na mesec",
+      "poudarek": ""
+    },
+    {
+      "naziv": "Letna vezava",
+      "opis": "Vezava za 12 mesecev, plačilo mesečno prek trajnika (Stripe).",
+      "otroci": 63,
+      "odrasli": 81,
+      "enota": "na mesec",
+      "poudarek": "10 % ceneje"
+    },
+    {
+      "naziv": "Letna članarina",
+      "opis": "Enkratno plačilo, velja 12 mesecev od dneva nakupa.",
+      "otroci": 700,
+      "odrasli": 900,
+      "enota": "za 12 mesecev",
+      "poudarek": "2 meseca gratis"
+    }
+  ],
+  "ostalo": [
+    { "naziv": "Enkratni obisk", "opis": "En trening v redni skupini.", "cena": 18 },
+    { "naziv": "Individualna ura", "opis": "Po dogovoru, izven časa rednih treningov.", "cena": 73.2 },
+    { "naziv": "Semi-individualna ura", "opis": "Po dogovoru, izven časa rednih treningov.", "cena": 122 }
+  ],
+  "popust": {
+    "naslov": "Družinski popust 15 %",
+    "besedilo": "Na drugega in vsakega nadaljnjega družinskega člana. Popusti se ne seštevajo — če ga želiš koristiti, nam to sporoči vnaprej."
+  }
+}
