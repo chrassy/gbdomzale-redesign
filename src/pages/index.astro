@@ -334,7 +334,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
   <div class="dlg-head">
     <button class="x" type="button" aria-label="Zapri" data-close>×</button>
     <h2 id="book-h">Brezplačna uvodna ura</h2>
-    <p>Izberi program in termin. Potrditev prejmeš po e-pošti.</p>
+    <p>Izberi program in termin. Oglasimo se ti po e-pošti in potrdimo podrobnosti.</p>
   </div>
   <form class="book" id="book-form">
     <div class="f"><label for="b-name">Ime in priimek</label><input id="b-name" name="name" required autocomplete="name" placeholder="Ana Novak"></div>
@@ -354,8 +354,14 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
       </div>
       <div class="f"><label for="b-slot">Termin</label><select id="b-slot" name="slot"></select></div>
     </div>
-    <p class="note">Prototip — obrazec v tej različici še ne pošilja podatkov.</p>
-    <button class="btn" type="submit">Potrdi rezervacijo <i class="arr">→</i></button>
+    <div class="f hp" aria-hidden="true">
+      <label for="b-web">Spletna stran</label>
+      <input id="b-web" name="website" tabindex="-1" autocomplete="off">
+    </div>
+    <label class="check"><input type="checkbox" id="b-consent" name="consent" required>
+      <span>Strinjam se, da Gracie Barra Domžale uporabi moje podatke za dogovor o uvodni uri.</span></label>
+    <p class="err" id="b-err" hidden></p>
+    <button class="btn" type="submit" id="b-submit">Potrdi rezervacijo <i class="arr">→</i></button>
   </form>
   <div class="done" hidden>
     <span class="eyebrow">Rezervirano</span>
@@ -449,11 +455,54 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
     dlg.addEventListener('click', (e) => {
       if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
     });
-    form.addEventListener('submit', (e) => {
+    const err = document.getElementById('b-err');
+    const submit = document.getElementById('b-submit');
+    const endpoint = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/api/prijava`;
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('b-name').value.trim().split(' ')[0] || '';
-      document.getElementById('done-h').textContent = `Se vidimo na blazini${name ? ', ' + name : ''}!`;
-      document.getElementById('done-p').textContent = `Tvoj termin: ${slot.value}. Potrditev z vsemi podrobnostmi pošljemo na ${document.getElementById('b-mail').value}.`;
+      err.hidden = true;
+      submit.disabled = true;
+      const prejsnji = submit.innerHTML;
+      submit.textContent = 'Pošiljam …';
+
+      const podatki = {
+        name: document.getElementById('b-name').value.trim(),
+        email: document.getElementById('b-mail').value.trim(),
+        tel: document.getElementById('b-tel').value.trim(),
+        prog: prog.value,
+        slot: slot.value,
+        consent: document.getElementById('b-consent').checked,
+        website: document.getElementById('b-web').value,
+      };
+
+      let odgovor = null;
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(podatki),
+        });
+        odgovor = await res.json().catch(() => null);
+        if (!res.ok || !odgovor?.ok) throw new Error(odgovor?.napaka || 'Prijave ni bilo mogoče poslati.');
+      } catch (e2) {
+        const zeOmenjaMail = e2.message.includes('@');
+        err.innerHTML = zeOmenjaMail
+          ? e2.message.replace(/info@gbdomzale\.si/g, '<a href="mailto:info@gbdomzale.si">info@gbdomzale.si</a>')
+          : `${e2.message} Lahko nam pišeš na <a href="mailto:info@gbdomzale.si">info@gbdomzale.si</a>.`;
+        err.hidden = false;
+        submit.disabled = false;
+        submit.innerHTML = prejsnji;
+        return;
+      }
+
+      const ime = podatki.name.split(' ')[0] || '';
+      document.getElementById('done-h').textContent = `Se vidimo na blazini${ime ? ', ' + ime : ''}!`;
+      document.getElementById('done-p').textContent = odgovor.potrditev
+        ? `Tvoj termin: ${podatki.slot}. Potrditev z vsemi podrobnostmi smo poslali na ${podatki.email}.`
+        : `Tvoj termin: ${podatki.slot}. Javimo se ti na ${podatki.email} in potrdimo podrobnosti.`;
+      submit.disabled = false;
+      submit.innerHTML = prejsnji;
       form.hidden = true;
       done.hidden = false;
     });

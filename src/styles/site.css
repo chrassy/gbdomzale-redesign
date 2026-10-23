@@ -11,6 +11,7 @@
   --section:clamp(56px,8vw,112px);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
@@ -276,3 +277,12 @@ form.book{padding:22px 24px 26px;display:grid;gap:14px}
 .done h3{font-size:34px}
 .done p{color:var(--muted)}
 .done .btn{justify-self:start;margin:8px 0 0 6px}
+
+/* Obrazec: past za robote, soglasje, napaka */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.check{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:14.5px;color:var(--muted);cursor:pointer}
+.check input{width:18px;height:18px;margin:1px 0 0;accent-color:var(--red);flex:none}
+.check input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.book .err{font-size:14.5px;color:var(--red-deep);background:#FDECEC;border-left:3px solid var(--red);padding:10px 12px}
+.book .err a{color:inherit}
+.book button[disabled]{opacity:.6;cursor:progress}

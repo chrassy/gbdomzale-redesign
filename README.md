@@ -30,6 +30,19 @@ npm run build
 
 `public/video/hero-1280.mp4` (desktop) and `hero-854.mp4` (mobile) are a 13.8 s cut-to-cut loop (39.80–53.58 s) from the *Gracie Barra Institucional* film by Lucas Ferraz. H.264, no audio, fast-start. `hero-poster.jpg` is the first frame; it shows until the video loads and stays as the only image for visitors with reduced motion or data saver on.
 
+## Booking form
+
+`functions/api/prijava.js` is a Cloudflare Pages Function: it validates the submission, drops honeypot hits, and emails the school through [Resend](https://resend.com). It only runs on Cloudflare Pages — on GitHub Pages the form reports the failure and offers a mailto fallback.
+
+Configure on the Pages project (`npx wrangler pages secret put <NAME> --project-name gbdomzale`):
+
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | required; without it the endpoint answers 503 |
+| `MAIL_TO` | recipient, defaults to info@gbdomzale.si |
+| `MAIL_FROM` | sender; use `onboarding@resend.dev` until the domain is verified at Resend |
+| `MAIL_CONFIRM` | `on` also sends a confirmation to the applicant (only once the domain is verified) |
+
 ## Moving to the real domain
 
 Set repository variables `BASE_PATH=/` and `SITE_URL=https://gbdomzale.si`, then redeploy. The booking form is still a demo and needs a backend before launch.
