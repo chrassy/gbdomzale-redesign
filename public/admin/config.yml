@@ -83,6 +83,7 @@ collections:
               - { name: video_desktop, label: Video za računalnik, widget: file, media_folder: public/video, public_folder: /video }
               - { name: video_mobile, label: Video za telefon, widget: file, media_folder: public/video, public_folder: /video }
               - { name: video_slika, label: Slika prvega kadra, widget: image, media_folder: public/video, public_folder: /video }
+              - { name: video_slika_mobile, label: Slika prvega kadra za telefon, widget: image, media_folder: public/video, public_folder: /video }
           - name: dejstva
             label: Modri pas s podatki
             widget: list
