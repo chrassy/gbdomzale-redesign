@@ -1,8 +1,8 @@
 # Gracie Barra Domžale — redesign prototype
 
-Static site built with [Astro](https://astro.build), edited through [Sveltia CMS](https://github.com/sveltia/sveltia-cms), deployed to GitHub Pages by GitHub Actions on every push to `main`.
+Static site built with [Astro](https://astro.build), edited through [Sveltia CMS](https://github.com/sveltia/sveltia-cms), deployed by GitHub Actions on every push to `main` (including CMS saves) to both GitHub Pages and Cloudflare Pages.
 
-Live: https://chrassy.github.io/gbdomzale-redesign/ · Editor: https://chrassy.github.io/gbdomzale-redesign/admin/
+Live: https://gbdomzale.pages.dev/ (Cloudflare, booking form works) · https://chrassy.github.io/gbdomzale-redesign/ (GitHub Pages) · Editor: https://chrassy.github.io/gbdomzale-redesign/admin/
 
 ## Editing content
 
@@ -43,6 +43,17 @@ Configure on the Pages project (`npx wrangler pages secret put <NAME> --project-
 | `MAIL_TO` | recipient, defaults to info@gbdomzale.si |
 | `MAIL_FROM` | sender; use `onboarding@resend.dev` until the domain is verified at Resend |
 | `MAIL_CONFIRM` | `on` also sends a confirmation to the applicant (only once the domain is verified) |
+
+## Cloudflare Pages deploy
+
+`.github/workflows/cloudflare.yml` builds with `BASE_PATH=/` and runs `wrangler pages deploy` into the `gbdomzale` project. It needs:
+
+| Where | Name | Value |
+| --- | --- | --- |
+| Repository secret | `CLOUDFLARE_API_TOKEN` | API token with **Account · Cloudflare Pages · Edit** |
+| Repository variable | `CLOUDFLARE_ACCOUNT_ID` | the Cloudflare account ID |
+
+To redeploy without a new commit, run the workflow manually from the Actions tab.
 
 ## Moving to the real domain
 
