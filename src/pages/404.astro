@@ -1,0 +1,25 @@
+---
+import Osnova from '../layouts/Osnova.astro';
+const domov = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<Osnova naslov="Strani ni — Gracie Barra Domžale" opis="Te strani ni. Poglej programe, urnik ali cenik.">
+<main>
+  <section class="page-head" aria-labelledby="nf-h">
+    <svg class="hero-tri" viewBox="0 0 100 87" aria-hidden="true"><polygon points="50,1.5 98.5,85.5 1.5,85.5"/></svg>
+    <div class="wrap">
+      <span class="eyebrow">Napaka 404</span>
+      <h1 id="nf-h">Te strani ni</h1>
+      <p class="meta">Morda je bila preimenovana ali odstranjena</p>
+    </div>
+  </section>
+
+  <div class="wrap" style="padding-block:clamp(32px,5vw,64px) var(--section)">
+    <p class="lede">Poskusi od tu naprej:</p>
+    <div class="ctas" style="display:flex;gap:20px 26px;flex-wrap:wrap;padding-left:6px;margin-top:26px">
+      <a class="btn" href={domov}>Na naslovnico <i class="arr">→</i></a>
+      <a class="btn ghost" href={domov + '#urnik'}>Urnik</a>
+      <a class="btn ghost" href={domov + 'cenik/'}>Cenik</a>
+    </div>
+  </div>
+</main>
+</Osnova>

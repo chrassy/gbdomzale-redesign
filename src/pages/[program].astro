@@ -1,0 +1,86 @@
+---
+import Osnova from '../layouts/Osnova.astro';
+import programi from '../data/programi.json';
+import urnik from '../data/urnik.json';
+
+export async function getStaticPaths() {
+  const { seznam } = (await import('../data/programi.json')).default;
+  return seznam.filter((p) => p.pot).map((p) => ({ params: { program: p.pot }, props: { p } }));
+}
+
+const { p } = Astro.props;
+const domov = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const asset = (x) => domov + String(x).replace(/^\//, '');
+
+const ZNACKE = {
+  GBK: { gb: 'GB', znak: 'K', razred: 'gbk' },
+  GB1: { gb: 'GB', znak: '1', razred: 'gb1' },
+  GB2: { gb: 'GB', znak: '2', razred: 'gb2' },
+  GB3: { gb: 'GB', znak: '3', razred: 'gb3' },
+};
+const DNEVI = { pon: 'Ponedeljek', tor: 'Torek', sre: 'Sreda', cet: 'Četrtek', pet: 'Petek', sob: 'Sobota' };
+
+const z = ZNACKE[p.program];
+const moji = urnik.termini.filter((t) => t.programi.includes(p.program));
+const drugi = programi.seznam.filter((x) => x.pot && x.pot !== p.pot);
+---
+
+<Osnova
+  naslov={`${p.program} — ${p.naslov} | Gracie Barra Domžale`}
+  opis={p.opis}
+>
+<main>
+  <section class="page-head" aria-labelledby="prog-h">
+    <svg class="hero-tri" viewBox="0 0 100 87" aria-hidden="true"><polygon points="50,1.5 98.5,85.5 1.5,85.5"/></svg>
+    <div class="wrap">
+      <span class="eyebrow">Program {p.program}</span>
+      <h1 id="prog-h">{p.stran.naslov}</h1>
+      <p class="meta">{p.komu}</p>
+    </div>
+  </section>
+
+  <div class="wrap prog-doc">
+    <article class="prose">
+      {p.stran.odstavki.map((o) => <p>{o}</p>)}
+
+      <div class="prog-cta">
+        <div>
+          <h2>Pridi na brezplačno uvodno uro</h2>
+          <p>Individualno in brez obveznosti. Kimono ti posodimo.</p>
+        </div>
+        <a class="btn white" href={domov + '#prijava'}>Rezerviraj <i class="arr">→</i></a>
+      </div>
+    </article>
+
+    <aside class="prog-side">
+      <figure>
+        <img src={asset(p.slika)} alt={p.alt} loading="lazy">
+        <span class={`badge on-dark k-${z.razred}`}><span class="gb">{z.gb}</span><span class="n">{z.znak}</span></span>
+      </figure>
+
+      <h2 class="h-sm">Termini</h2>
+      {moji.length > 0 ? (
+        <ul class="termini">
+          {moji.map((t) => (
+            <li>
+              <span class="dan">{DNEVI[t.dan]}</span>
+              <time>{t.ura}</time>
+              <small>{t.skupina}</small>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="desc">Termini so objavljeni v urniku.</p>
+      )}
+      <a class="btn ghost sm" href={domov + '#urnik'}>Cel urnik <i class="arr">→</i></a>
+
+      <h2 class="h-sm" style="margin-top:30px">Drugi programi</h2>
+      <ul class="drugi">
+        {drugi.map((x) => (
+          <li><a href={domov + x.pot + '/'}><strong>{x.program}</strong> {x.naslov}</a></li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</main>
+</Osnova>

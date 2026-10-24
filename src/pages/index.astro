@@ -9,6 +9,7 @@ const { promo, hero, dejstva, koraki, zakaj, citat, kontakt } = nastavitve;
 
 // Poti do slik delujejo na GitHub Pages (podmapa) in na lastni domeni.
 const asset = (p) => import.meta.env.BASE_URL.replace(/\/$/, '') + '/' + String(p).replace(/^\//, '');
+const domov = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const DNEVI = [
   { kljuc: 'pon', kratko: 'Pon', dolgo: 'ponedeljek' },
@@ -116,7 +117,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
     </div>
     <div class="prog-grid">
       {programi.seznam.map((p) => (
-        <a class="prog" href="#urnik" data-filter={p.filter}>
+        <a class="prog" href={p.pot ? domov + p.pot + '/' : '#urnik'} data-filter={p.pot ? undefined : p.filter}>
           <figure><img src={asset(p.slika)} alt={p.alt} loading="lazy"></figure>
           <div class="body">
             <span class={`badge k-${ZNACKE[p.program].razred}`}>

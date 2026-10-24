@@ -9,7 +9,16 @@
       "opis": "Naše otroške skupine so razdeljene po starosti, tako da prav vsak otrok dobi sebi najbolj primerno izkušnjo ter pristop do učenja.\nOsredotočenost, disciplina, vztrajnost, sodelovanje in spoštovanje so vrednote, ki jih otroci odnesejo tudi domov in v šolo.",
       "slika": "/img/kids.jpg",
       "alt": "Otrok in inštruktor na blazini",
-      "filter": "gbk"
+      "filter": "gbk",
+      "pot": "gbk",
+      "stran": {
+        "naslov": "Kaj je potrebno, da otrok postane prvak?",
+        "odstavki": [
+          "Da bi uspel v čemer koli, mora posameznik imeti močan set vrednot in trden karakter, ki mu dasta vztrajnost za doseganje ciljev. Program GBK je bil ustvarjen, da otrokom med 5. in 15. letom zagotovi primerno okolje za razvoj in jim omogoči, da ponotranjijo ključne življenjske vrednote: osredotočenost, disciplino, vztrajnost, sodelovanje in spoštovanje.",
+          "Jiu-jitsu kot kontaktni šport ponuja okolje, ki je polno izzivov, a hkrati zelo varno. Izid daljšega obdobja vadbe v otroštvu sega mnogo dlje kot do dosežkov na blazinah — disciplina in odlika, ki ju inštruktorji zahtevajo, se pogosto preneseta tudi na obnašanje doma in v šoli.",
+          "Otroške skupine so razdeljene po starosti, tako da vsak otrok dobi sebi najbolj primerno izkušnjo in pristop do učenja."
+        ]
+      }
     },
     {
       "program": "GB1",
@@ -18,7 +27,16 @@
       "opis": "V GB1 poskrbimo, da na najbolj učinkovit način postavimo trdne in neomajne temelje našega Jiu-Jitsu znanja, kar nam omogoči hitrejše in lažje osvajanje nadaljnjih tehnik ter njihovih kombinacij.",
       "slika": "/img/ig11.jpg",
       "alt": "Stisk rok pred sparingom",
-      "filter": "gb1"
+      "filter": "gb1",
+      "pot": "gb1",
+      "stran": {
+        "naslov": "Kako izgledajo moji prvi koraki v jiu-jitsu?",
+        "odstavki": [
+          "V GB1 poskrbimo, da na najbolj učinkovit način postavimo trdne in neomajne temelje našega jiu-jitsu znanja, kar nam omogoči hitrejše in lažje osvajanje nadaljnjih tehnik ter njihovih kombinacij, ki jih spoznamo v nadaljevalnem programu GB2.",
+          "Program GB1 vsebuje 16-tedenski ciklični kurikulum, namenjen osvajanju samoobrambnih tehnik in spoznavanju tehnik iz vseh glavnih položajev v brazilskem jiu-jitsu — tako v obrambi kot v napadu.",
+          "Vpisi potekajo skozi celotno leto, in ne le ob začetku vsakega novega cikla."
+        ]
+      }
     },
     {
       "program": "GB2",
@@ -27,7 +45,16 @@
       "opis": "Za razliko od programa GB1, ki se osredotoča na temelje in glavne principe ter filozofije Brazilskega Jiu-Jitsa, je program GB2 zgrajen na tehnikah in vajah visokega nivoja, ki začnejo oblikovati individualni pristop  vsakega učenca, skozi razvoj refleksov, hitrosti, odzivnega časa ter seveda prehodov med tehnikami.\n\nPo nekaj mesecih v programu GB2, učenci večinoma začnejo čutiti globljo povezavo z Gracie Barra filozofijo, s svojimi trening partnerji, kot tudi večjo mero discipline in predanosti do zdravih življenjskih navad, ki jim omogočajo dobro telesno pripravljenost.",
       "slika": "/img/ig06.jpg",
       "alt": "Podelitev pasu",
-      "filter": "gb2"
+      "filter": "gb2",
+      "pot": "gb2",
+      "stran": {
+        "naslov": "Kaj sledi, ko osvojim osnove jiu-jitsa?",
+        "odstavki": [
+          "Struktura Gracie Barra programov določa tri glavne faze razvoja: GB1 so osnove, GB2 je nadaljevalni in GB3 napredni program. Faze kažejo na različne stopnje zrelosti, vsak učenec pa skoznje napreduje s svojim tempom, neodvisno od drugih.",
+          "Za razliko od GB1, ki se osredotoča na temelje in glavne principe, je GB2 zgrajen na tehnikah in vajah visokega nivoja, ki začnejo oblikovati individualni pristop vsakega učenca — skozi razvoj refleksov, hitrosti, odzivnega časa in prehodov med tehnikami.",
+          "Po nekaj mesecih v programu GB2 učenci večinoma začnejo čutiti globljo povezavo z Gracie Barra filozofijo in s trening partnerji, kot tudi večjo mero discipline in predanosti zdravim življenjskim navadam."
+        ]
+      }
     },
     {
       "program": "GB3",
@@ -36,7 +63,17 @@
       "opis": "Gracie Barra program za ustvarjanje črnih pasov oz. GB3 ali napredni program, je zadnja faza v strukturi GB programov za odrasle. Čeprav označuje prihod učenca na najvišji nivo treningov v naši šoli, poleg tega predstavlja tudi nov začetek.\n\nCilj tega programa je  izoblikovanje   individualnega pristopa učenca, preko spoznavanja Jiu-Jitsu tehnik najvišjega nivoja ter njihovih variacij. Dinamika tega programa nam vedno zadaja nove izzive, a na varen in zabaven način za vse učence, ki so na svoji poti od modrega do črnega pasu.\n\nTekom programa GB3, učenci začnejo zares dojemati vse malenkosti, ki so jih tolikokrat slišali v obdobju, ko so bili še beli pasovi: Jiu-Jitsu je neskončen niz dnevnih dosežkov, ki vedno vodijo do novih zanimivih in zabavnih izzivov, tako mentalnih kot fizičnih.\n\nGB učenci, ki so udeleženi v programu GB3, so v vzgled vsem v naši šoli. Odgovornost deljenja GB tehnik in filozofije z manj izkušenimi člani je vzeta resno. Posamezniki v programu GB3 v naši šoli igrajo ključno vlogo pri ohranjanju prijaznega in varnega okolja za trening, ki je usmerjeno k napredku celotne skupnosti.",
       "slika": "/img/att.llMAJT0m1Pgogq1HDHNyl9bFts4Jx07cblbesGCGInI.JPG",
       "alt": "Vijolični in črni pas v modrih kimonih",
-      "filter": "gb2"
+      "filter": "gb2",
+      "pot": "gb3",
+      "stran": {
+        "naslov": "Lahko posameznik resnično osvoji vse, kar jiu-jitsu ponuja?",
+        "odstavki": [
+          "Program za ustvarjanje črnih pasov oziroma GB3 je zadnja faza v strukturi GB programov za odrasle. Čeprav označuje prihod na najvišji nivo treningov v šoli, hkrati predstavlja nov začetek.",
+          "Cilj programa je izoblikovanje individualnega pristopa učenca prek spoznavanja tehnik najvišjega nivoja in njihovih variacij. Dinamika programa vedno zadaja nove izzive, a na varen in zabaven način za vse, ki so na poti od modrega do črnega pasu.",
+          "Tekom GB3 učenci zares dojamejo vse tisto, kar so tolikokrat slišali kot beli pasovi: jiu-jitsu je neskončen niz dnevnih dosežkov, ki vodijo do novih mentalnih in fizičnih izzivov.",
+          "Učenci v programu GB3 so vzgled vsem v šoli. Odgovornost deljenja tehnik in filozofije z manj izkušenimi člani je vzeta resno — prav oni igrajo ključno vlogo pri ohranjanju prijaznega in varnega okolja za trening."
+        ]
+      }
     },
     {
       "program": "GBF",

@@ -328,3 +328,22 @@ form.book{padding:22px 24px 26px;display:grid;gap:14px}
 .family p{color:#DCE4FA;font-size:16px;max-width:34ch}
 .price-note{margin-top:32px;font-size:15px;color:var(--muted)}
 .price-note a{color:var(--blue);text-underline-offset:3px}
+
+/* Programske podstrani */
+.prog-doc{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(32px,5vw,72px);align-items:start;padding-block:clamp(40px,6vw,72px) var(--section)}
+@media (max-width:880px){.prog-doc{grid-template-columns:1fr}}
+.prog-side figure{position:relative;margin:0 0 26px;aspect-ratio:4/3;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,0 100%)}
+.prog-side figure img{width:100%;height:100%;object-fit:cover}
+.prog-side figure .badge{position:absolute;left:14px;bottom:20px;font-size:26px;text-shadow:0 2px 12px rgba(8,18,50,.5)}
+ul.termini{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+ul.termini li{background:var(--paper);display:grid;grid-template-columns:1fr auto;align-items:baseline;padding:10px 13px}
+ul.termini .dan{font:700 14px/1.2 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+ul.termini time{font:800 20px/1 var(--display);font-variant-numeric:tabular-nums;color:var(--ink)}
+ul.termini small{grid-column:1/-1;font-size:13.5px;color:var(--muted);margin-top:3px}
+ul.drugi{list-style:none;margin:0;padding:0;display:grid;gap:0}
+ul.drugi a{display:block;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:15.5px}
+ul.drugi a strong{font:800 italic 17px/1 var(--display);margin-right:8px;color:var(--red)}
+ul.drugi a:hover{color:var(--red)}
+.prog-cta{margin-top:34px;background:var(--blue);color:#fff;padding:clamp(22px,3vw,30px);display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;justify-content:space-between}
+.prog-cta h2{color:#fff;margin:0;font-size:clamp(21px,2.4vw,27px)}
+.prog-cta p{color:#C9D4F2;margin-top:6px;font-size:15.5px}
