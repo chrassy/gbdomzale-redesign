@@ -11,14 +11,22 @@ const { kontakt } = nastavitve;
 const domov = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const asset = (p) => domov + String(p).replace(/^\//, '');
 const sidro = (id) => (naslovnica ? '' : domov) + '#' + id;
+const kanonicni = new URL(Astro.url.pathname, Astro.site ?? 'https://gbdomzale.si').href;
 ---
 
 <!doctype html>
 <html lang="sl">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="description" content={opis}>
+<link rel="canonical" href={kanonicni}>
+<meta property="og:title" content={naslov}>
+<meta property="og:description" content={opis}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={kanonicni}>
+<meta property="og:image" content={new URL(asset("/video/hero-poster.jpg"), Astro.site ?? "https://gbdomzale.si").href}>
+<meta property="og:locale" content="sl_SI">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{naslov}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">

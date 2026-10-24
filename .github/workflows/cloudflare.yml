@@ -26,7 +26,7 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /
-          SITE_URL: https://gbdomzale.pages.dev
+          SITE_URL: https://gbdomzale.si
       # Objava iz korena repozitorija, da wrangler pobere tudi functions/ (obrazec za prijavo).
       - uses: cloudflare/wrangler-action@v3
         with:
