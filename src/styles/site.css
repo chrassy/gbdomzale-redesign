@@ -230,13 +230,6 @@ p{margin:0}
 .foot .brand span{color:#fff}
 .foot .legal{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px}
 
-/* Mobile sticky CTA */
-.mcta{display:none}
-@media (max-width:620px){
-  .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);border-top:1px solid var(--line)}
-  .mcta .btn{flex:1;justify-content:center}
-  body{padding-bottom:72px}
-}
 
 /* Booking dialog */
 dialog{border:0;padding:0;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);background:var(--paper);color:var(--ink)}

@@ -31,6 +31,10 @@ const zemljevid = `https://www.google.com/maps/search/?api=1&query=${encodeURICo
 <meta name="twitter:card" content="summary_large_image">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{naslov}</title>
+<link rel="icon" href={asset('/favicon.ico')} sizes="32x32">
+<link rel="icon" href={asset('/favicon.svg')} type="image/svg+xml">
+<link rel="apple-touch-icon" href={asset('/apple-touch-icon.png')}>
+<meta name="theme-color" content="#1C3B91">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap">
@@ -94,12 +98,6 @@ const zemljevid = `https://www.google.com/maps/search/?api=1&query=${encodeURICo
     <div class="legal"><span>© 2026 Gracie Barra Domžale</span><span>Jiu-Jitsu for Everyone®</span></div>
   </div>
 </footer>
-
-<div class="mcta">
-  {naslovnica
-    ? <button class="btn" data-book>Brezplačna uvodna ura <i class="arr">→</i></button>
-    : <a class="btn" href={domov + '#prijava'}>Brezplačna uvodna ura <i class="arr">→</i></a>}
-</div>
 
 <slot name="po-nogi" />
 
