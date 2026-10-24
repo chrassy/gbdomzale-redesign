@@ -12,6 +12,8 @@ const domov = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const asset = (p) => domov + String(p).replace(/^\//, '');
 const sidro = (id) => (naslovnica ? '' : domov) + '#' + id;
 const kanonicni = new URL(Astro.url.pathname, Astro.site ?? 'https://gbdomzale.si').href;
+// Povezava na zemljevid se izpelje iz naslova, da se ne moreta raziti.
+const zemljevid = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(kontakt.naslov_vrstica1 + ', ' + kontakt.naslov_vrstica2)}`;
 ---
 
 <!doctype html>
@@ -68,7 +70,7 @@ const kanonicni = new URL(Astro.url.pathname, Astro.site ?? 'https://gbdomzale.s
         <h4>Kje smo</h4>
         <ul>
           <li>{kontakt.naslov_vrstica1}<br>{kontakt.naslov_vrstica2}</li>
-          <li><a href={kontakt.zemljevid} target="_blank" rel="noopener">Odpri zemljevid →</a></li>
+          <li><a href={zemljevid} target="_blank" rel="noopener">Odpri zemljevid →</a></li>
         </ul>
       </div>
       <div>
