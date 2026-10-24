@@ -29,7 +29,7 @@ npm run build
 
 ## Hero video
 
-Both loops are the same 8 s of training on the club's own mats (20.90 s onward), cut from the club's walkthrough video in two formats: `hero-desktop.mp4` (≥768 px, 1024×576 landscape, 20.90–28.90 s) and `hero-mobile.mp4` (<768 px, 576×1024 portrait, 20.90–29.00 s). Each has a `-poster.jpg` with its first frame, which shows until the video loads and stays as the only image for visitors with reduced motion or data saver on. H.264, no audio, fast-start.
+Both loops are the same ~14 s of the club's walkthrough video: the door opening onto the mats, the GB legends on the wall, then training on the mats. It comes in two formats: `hero-desktop.mp4` (≥768 px, 1024×576 landscape, 15.05–28.90 s) and `hero-mobile.mp4` (<768 px, 576×1024 portrait, 15.05–29.00 s). Each has a `-poster.jpg` with its first frame, which shows until the video loads and stays as the only image for visitors with reduced motion or data saver on. H.264, no audio, fast-start.
 
 ## Booking form
 
