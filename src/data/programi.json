@@ -1,6 +1,6 @@
 {
   "naslov": "Pot od belega do črnega pasu",
-  "besedilo": "Struktura je pečat vseh Gracie Barra šol: vsak učenec ve, kaj se pričakuje od njega — in kaj lahko pričakuje od inštruktorjev.",
+  "besedilo": "Struktura je pečat vseh Gracie Barra šol: vsak učenec ve, kaj se pričakuje od njega — in kaj lahko pričakuje od inštruktorjev.\nProgrami vsebujejo 16-tedenske ciklične kurikulume, namenjene osvajanju samoobrambnih tehnik in spoznavanju tehnik iz vseh večjih oz. glavnih položajev v Brazilskem Jiu-Jitsu – tako v smislu obrambe, kot tudi napada.",
   "seznam": [
     {
       "program": "GBK",
@@ -15,7 +15,7 @@
       "program": "GB1",
       "naslov": "Osnove",
       "komu": "Odrasli začetniki",
-      "opis": "16-tedenski ciklični kurikulum: samoobramba in vsi glavni položaji brazilskega jiu-jitsa — v napadu in obrambi.",
+      "opis": "V GB1 poskrbimo, da na najbolj učinkovit način postavimo trdne in neomajne temelje našega Jiu-Jitsu znanja, kar nam omogoči hitrejše in lažje osvajanje nadaljnjih tehnik ter njihovih kombinacij.",
       "slika": "/img/ig11.jpg",
       "alt": "Stisk rok pred sparingom",
       "filter": "gb1"
