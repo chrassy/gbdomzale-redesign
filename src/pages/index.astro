@@ -62,7 +62,12 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
 <section class="hero" aria-labelledby="hero-h">
   <div class="hero-media" aria-hidden="true">
     <video id="hero-video" muted loop playsinline preload="none" poster={asset(hero.video_slika)}
-      data-src-lg={asset(hero.video_desktop)} data-src-sm={asset(hero.video_mobile)}></video>
+      data-src-lg={asset(hero.video_desktop)} data-src-sm={asset(hero.video_mobile)}
+      data-poster-sm={asset(hero.video_slika_mobile)}></video>
+    <script is:inline>
+      // Pokončni prvi kader za telefon, preden se stran izriše (velja tudi, če video ostane izklopljen).
+      (function (v) { if (innerWidth < 768 && v.dataset.posterSm) v.poster = v.dataset.posterSm; })(document.getElementById('hero-video'));
+    </script>
   </div>
   <svg class="hero-tri" viewBox="0 0 100 87" aria-hidden="true"><polygon points="50,1.5 98.5,85.5 1.5,85.5"/></svg>
   <div class="wrap">

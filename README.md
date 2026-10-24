@@ -29,7 +29,7 @@ npm run build
 
 ## Hero video
 
-`public/video/hero-1280.mp4` (desktop) and `hero-854.mp4` (mobile) are a 13.8 s cut-to-cut loop (39.80–53.58 s) from the *Gracie Barra Institucional* film by Lucas Ferraz. H.264, no audio, fast-start. `hero-poster.jpg` is the first frame; it shows until the video loads and stays as the only image for visitors with reduced motion or data saver on.
+Both loops are the same ~14 s of the club's walkthrough video: the door opening onto the mats, the GB legends on the wall, then training on the mats. It comes in two formats: `hero-desktop.mp4` (≥768 px, 1024×576 landscape, 15.05–28.90 s) and `hero-mobile.mp4` (<768 px, 576×1024 portrait, 15.05–29.00 s). Each has a `-poster.jpg` with its first frame, which shows until the video loads and stays as the only image for visitors with reduced motion or data saver on. H.264, no audio, fast-start.
 
 ## Booking form
 
