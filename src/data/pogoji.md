@@ -38,7 +38,7 @@ Dogovora o članstvu do vključno zadnjega meseca vezave (pri letni vezavi – e
 
 Članarina se obračuna po veljavnem ceniku, glede na starost člana, ki določa h kateri skupini član pripada. V veljavi so cene, navedene v ceniku, dostopnem na spletni strani Kluba ter recepciji Kluba. Vse cene so z vključenim DDV in veljajo v trenutku sklenitve posameznega dogovora o članstvu.
 
-Račune za članarino pošiljamo po elektronski pošti, za tekoči mesec. Rok plačila članarine je 15 dni od izstavitve računa.
+Račune za članarino pošiljamo po elektronski pošti, za tekoči mesec. Rok plačila članarine je do 10. v tekočem mesecu.
 
 **Zamuda pri plačilu članarine:** V primeru zamujanja s plačilom se članu lahko zaračuna zakonite zamudne obresti ali prepove nadaljnje sodelovanje pri vadbi.
 
