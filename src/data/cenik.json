@@ -22,16 +22,28 @@
     {
       "naziv": "Letna članarina",
       "opis": "Enkratno plačilo, velja 12 mesecev od dneva nakupa.",
-      "otroci": 700,
-      "odrasli": 900,
+      "otroci": 714,
+      "odrasli": 918,
       "enota": "za 12 mesecev",
-      "poudarek": "2 meseca gratis"
+      "poudarek": "15% ceneje"
     }
   ],
   "ostalo": [
-    { "naziv": "Enkratni obisk", "opis": "En trening v redni skupini.", "cena": 18 },
-    { "naziv": "Individualna ura", "opis": "Po dogovoru, izven časa rednih treningov.", "cena": 73.2 },
-    { "naziv": "Semi-individualna ura", "opis": "Po dogovoru, izven časa rednih treningov.", "cena": 122 }
+    {
+      "naziv": "Enkratni obisk",
+      "opis": "En trening v redni skupini.",
+      "cena": 18
+    },
+    {
+      "naziv": "Individualna ura",
+      "opis": "Po dogovoru, izven časa rednih treningov.",
+      "cena": 73.2
+    },
+    {
+      "naziv": "Semi-individualna ura",
+      "opis": "Po dogovoru, izven časa rednih treningov.",
+      "cena": 122
+    }
   ],
   "popust": {
     "naslov": "Družinski popust 15 %",
