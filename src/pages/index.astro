@@ -219,7 +219,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
   <div class="wrap">
     <div class="sec-head split">
       <div style="display:grid;gap:16px">
-        <span class="eyebrow">Z naše blazine</span>
+        <span class="eyebrow">Z naših blazin</span>
         <h2 id="feed-h">@gbdomzale</h2>
       </div>
       <a class="btn ghost" href={kontakt.instagram} target="_blank" rel="noopener">Sledi na Instagramu <i class="arr">→</i></a>
@@ -279,7 +279,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
   </form>
   <div class="done" hidden>
     <span class="eyebrow">Rezervirano</span>
-    <h3 id="done-h">Se vidimo na blazini!</h3>
+    <h3 id="done-h">Se vidimo na blazinah!</h3>
     <p id="done-p"></p>
     <button class="btn" type="button" data-close>Zapri</button>
   </div>
@@ -415,7 +415,7 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
       }
 
       const ime = podatki.name.split(' ')[0] || '';
-      document.getElementById('done-h').textContent = `Se vidimo na blazini${ime ? ', ' + ime : ''}!`;
+      document.getElementById('done-h').textContent = `Se vidimo na blazinah${ime ? ', ' + ime : ''}!`;
       document.getElementById('done-p').textContent = odgovor.potrditev
         ? `Tvoj termin: ${podatki.slot}. Potrditev z vsemi podrobnostmi smo poslali na ${podatki.email}.`
         : `Tvoj termin: ${podatki.slot}. Javimo se ti na ${podatki.email} in potrdimo podrobnosti.`;

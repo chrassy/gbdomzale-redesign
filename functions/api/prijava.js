@@ -26,6 +26,16 @@ const json = (status, body) =>
     headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' },
   });
 
+// Izbrani termin že nosi ime skupine ("Ponedeljek 18:30 — Odrasli začetniki").
+// Kadar je to ime enako programu, ga ne ponavljamo dvakrat v istem sporočilu.
+const brezPonovitve = (termin, program) => {
+  const i = termin.indexOf('—');
+  if (i < 0) return termin;
+  const skupina = termin.slice(i + 1).trim().toLowerCase();
+  const ime = program.replace(/\s*\([^()]*\)\s*$/, '').trim().toLowerCase();
+  return skupina === ime ? termin.slice(0, i).trim() : termin;
+};
+
 const veljavenEmail = (v) => /^[^@\s]+@[^@\s.]+(\.[^@\s.]+)+$/.test(v) && v.length <= 120;
 
 async function posljiPosto(env, { from, to, replyTo, subject, text }) {
@@ -68,6 +78,7 @@ export async function onRequestPost({ request, env }) {
 
   const to = env.MAIL_TO || 'info@gbdomzale.si';
   const from = env.MAIL_FROM || 'Gracie Barra Domžale <onboarding@resend.dev>';
+  const terminLep = brezPonovitve(termin, program);
   const besedilo = [
     'Nova prijava na brezplačno uvodno uro',
     '',
@@ -75,7 +86,7 @@ export async function onRequestPost({ request, env }) {
     `E-pošta:  ${email}`,
     `Telefon:  ${tel || '—'}`,
     `Program:  ${program}`,
-    `Termin:   ${termin}`,
+    `Termin:   ${terminLep}`,
     '',
     `Oddano:   ${new Date().toLocaleString('sl-SI', { timeZone: 'Europe/Ljubljana' })}`,
   ].join('\n');
@@ -105,14 +116,20 @@ export async function onRequestPost({ request, env }) {
         text: [
           `Živjo ${ime.split(' ')[0]},`,
           '',
-          `prijava je zabeležena: ${program}, ${termin}.`,
+          'prijava na brezplačno uvodno uro je zabeležena:',
           '',
-          'S seboj prinesi športna oblačila in vodo, kimono ti posodimo.',
-          'Naslov: Ljubljanska cesta 1, 1233 Dob.',
+          `Program: ${program}`,
+          `Termin:  ${terminLep}`,
+          '',
+          'S seboj prinesi vodo, čiste natikače ali copate in kratko majico.',
+          'Kimono ti posodimo.',
+          '',
+          // Naslov je tudi v src/data/nastavitve.json — ob spremembi popravi oboje.
+          'Naslov: Ljubljanska cesta 3, 1233 Dob.',
           '',
           'Če termin ne ustreza, samo odgovori na to sporočilo.',
           '',
-          'Se vidimo na blazini,',
+          'Se vidimo na blazinah,',
           'Gracie Barra Domžale',
         ].join('\n'),
       });

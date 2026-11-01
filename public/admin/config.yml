@@ -128,7 +128,6 @@ collections:
               - { name: email, label: E-pošta, widget: string }
               - { name: instagram, label: Instagram, widget: string }
               - { name: facebook, label: Facebook, widget: string }
-              - { name: zemljevid, label: Povezava na zemljevid, widget: string }
               - { name: opis, label: Kratek opis v nogi, widget: text }
 
   - name: programi
