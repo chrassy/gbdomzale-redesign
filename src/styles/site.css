@@ -91,10 +91,26 @@ p{margin:0}
 .btn.ghost-light:hover::before{background:rgba(255,255,255,.16)}
 .btn.ghost-light:focus-visible::before{outline-color:#fff}
 @media (max-width:760px){
-  .hero{min-height:0}
-  .hero-media::after{background:linear-gradient(180deg,rgba(14,32,84,.72) 0%,rgba(14,32,84,.82) 55%,rgba(14,32,84,.92) 100%)}
+  /* Hero napolni zaslon do roba pregiba, besedilo pa sede na dno: zgoraj
+     ostane pas čistega videa, spodaj pa je zastor dovolj temen za branje. */
+  .hero{min-height:80vh;min-height:80svh;align-items:end;
+    padding-block:clamp(40px,12vw,72px) clamp(64px,14vw,88px)}
+  /* Čez cel video samo rahel modri pridih, da se kader vidi ... */
+  .hero-media::after{background:linear-gradient(180deg,
+    rgba(14,32,84,.30) 0%,rgba(14,32,84,.26) 40%,rgba(14,32,84,.42) 100%)}
+  /* ... temen zastor pa le pod besedilom, kjer je potreben za branje. */
+  .hero .inner{position:relative}
+  .hero .inner::before{content:"";position:absolute;inset:-40px -100vw -60px;z-index:-1;
+    background:linear-gradient(180deg,rgba(10,22,62,0) 0%,rgba(10,22,62,.68) 18%,
+      rgba(10,22,62,.86) 50%,rgba(10,22,62,.9) 100%)}
   .hero-media video{object-position:55% 50%}
-  .hero-tri{width:78vw;right:-26vw;top:28%;opacity:.7}
+  /* Senca drži besedilo berljivo tudi nad svetlim kadrom. */
+  .hero h1{text-shadow:0 2px 20px rgba(8,18,50,.8),0 1px 4px rgba(8,18,50,.55)}
+  /* Rdeča ima sama po sebi podoben svetlobni ton kot kader, zato dobi tesen rob. */
+  .hero h1 em{text-shadow:0 2px 16px rgba(8,18,50,.95),0 0 7px rgba(8,18,50,.85),0 1px 2px rgba(8,18,50,.9)}
+  .hero .eyebrow,.hero .lede{text-shadow:0 1px 10px rgba(8,18,50,.85)}
+  .hero .lede{color:#E6ECFD}
+  .hero-tri{width:78vw;right:-26vw;top:24%;opacity:.45}
 }
 
 /* Facts band */
