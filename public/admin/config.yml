@@ -227,3 +227,27 @@ collections:
               - { name: slika, label: Slika, widget: image }
               - { name: alt, label: Opis slike, widget: string }
               - { name: povezava, label: Povezava na objavo, widget: string }
+
+  - name: mnenja
+    label: Mnenja
+    files:
+      - name: mnenja
+        label: Mnenja s Googla
+        file: src/data/mnenja.json
+        fields:
+          - { name: vklop, label: Prikaži razdelek na strani, widget: boolean, default: true }
+          - { name: nadnaslov, label: Nadnaslov, widget: string }
+          - { name: naslov, label: Naslov razdelka, widget: string }
+          - { name: ocena, label: Povprečna ocena, widget: string, hint: "Kot jo pokaže Google, npr. 5,0" }
+          - { name: stevilo, label: Število mnenj na Googlu, widget: number, value_type: int, min: 0 }
+          - { name: povezava, label: Povezava na mnenja, widget: string }
+          - { name: povezava_oceni, label: Povezava »Napiši mnenje«, widget: string }
+          - name: seznam
+            label: Izbrana mnenja
+            label_singular: mnenje
+            widget: list
+            summary: "{{fields.ime}}"
+            fields:
+              - { name: ime, label: Ime, widget: string }
+              - { name: zvezdice, label: Zvezdice, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+              - { name: besedilo, label: Besedilo mnenja, widget: text }

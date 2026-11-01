@@ -4,6 +4,7 @@ import nastavitve from '../data/nastavitve.json';
 import urnik from '../data/urnik.json';
 import programi from '../data/programi.json';
 import galerija from '../data/galerija.json';
+import mnenja from '../data/mnenja.json';
 
 const { promo, hero, dejstva, koraki, zakaj, citat, kontakt } = nastavitve;
 
@@ -231,6 +232,37 @@ const terminiZaProgram = (kljuc) => termini.filter((t) => t.programi.includes(kl
     </div>
   </div>
 </section>
+
+{mnenja.vklop && mnenja.seznam.length > 0 && (
+<section class="revs" aria-labelledby="revs-h">
+  <div class="wrap">
+    <div class="sec-head split">
+      <div style="display:grid;gap:16px">
+        <span class="eyebrow">{mnenja.nadnaslov}</span>
+        <h2 id="revs-h">{mnenja.naslov}</h2>
+      </div>
+      <a class="btn ghost" href={mnenja.povezava} target="_blank" rel="noopener">Vsa mnenja na Googlu <i class="arr">→</i></a>
+    </div>
+
+    <div class="revs-grid">
+      <div class="score">
+        <strong>{mnenja.ocena}</strong>
+        <span class="stars" role="img" aria-label={`Povprečna ocena ${mnenja.ocena} od 5`}>★★★★★</span>
+        <p>{mnenja.stevilo} mnenj na Googlu</p>
+        <a class="btn sm" href={mnenja.povezava_oceni} target="_blank" rel="noopener">Napiši mnenje <i class="arr">→</i></a>
+      </div>
+
+      {mnenja.seznam.map((m) => (
+        <figure class="rev">
+          <span class="stars" role="img" aria-label={`Ocena ${m.zvezdice} od 5`}>{'★'.repeat(m.zvezdice)}</span>
+          <blockquote>{m.besedilo}</blockquote>
+          <figcaption>{m.ime}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+)}
 
 <section class="cta" aria-labelledby="cta-h">
   <div class="wrap">
