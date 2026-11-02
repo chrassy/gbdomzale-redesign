@@ -22,8 +22,6 @@ Klub trenutno izvaja štiri različne programe vadb, ki so podrobneje opisani na
 - GBK – Otroški program;
 - Individualne vadbe.
 
-Pogoj za sodelovanje v programih vadb je veljaven dogovor o članstvu ter poravnane zapadle obveznosti do kluba.
-
 Člani sprejemajo odgovornost in se odpovedujejo uveljavljanju odškodninske odgovornosti za morebitne poškodbe v povezavi z vadbami in dogodki Kluba.
 
 ## II. Članstvo
